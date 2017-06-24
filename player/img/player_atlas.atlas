@@ -1,0 +1,275 @@
+animations {
+  id: "Idle"
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Idle/Idle_011.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Attack"
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Attacking/Attacking_011.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Run"
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Running/Running_011.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "DoubleJump"
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Double Jump/Double Jump_011.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 50
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "JumpStart"
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Start/Jump Start_005.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "JumpLoop"
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Jump Loop/Jump Loop_005.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "FallDown"
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Falling Down/Falling Down_005.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Slide"
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Sliding/Sliding_005.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

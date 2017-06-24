@@ -1,0 +1,84 @@
+images {
+  image: "/img/factory/BackGround image.png"
+}
+images {
+  image: "/img/factory/BackGround image.png"
+}
+images {
+  image: "/img/factory/background structure 1.png"
+}
+images {
+  image: "/img/factory/beam 1.png"
+}
+images {
+  image: "/img/factory/beam 2.png"
+}
+images {
+  image: "/img/factory/beam 3.png"
+}
+images {
+  image: "/img/factory/box.png"
+}
+images {
+  image: "/img/factory/chain 1.png"
+}
+images {
+  image: "/img/factory/chain 2.png"
+}
+images {
+  image: "/img/factory/chain 3.png"
+}
+images {
+  image: "/img/factory/chiminie.png"
+}
+images {
+  image: "/img/factory/claw.png"
+}
+images {
+  image: "/img/factory/gear 1.png"
+}
+images {
+  image: "/img/factory/gear 2.png"
+}
+images {
+  image: "/img/factory/gear 3.png"
+}
+images {
+  image: "/img/factory/gear 4.png"
+}
+images {
+  image: "/img/factory/lever 1 base.png"
+}
+images {
+  image: "/img/factory/lever 1.png"
+}
+images {
+  image: "/img/factory/lever 2.png"
+}
+images {
+  image: "/img/factory/pipe 1.png"
+}
+images {
+  image: "/img/factory/pipe 2.png"
+}
+images {
+  image: "/img/factory/pipe curve.png"
+}
+images {
+  image: "/img/factory/platform 1.png"
+}
+images {
+  image: "/img/factory/platform 2.png"
+}
+images {
+  image: "/img/factory/press.png"
+}
+images {
+  image: "/img/factory/saw.png"
+}
+images {
+  image: "/img/factory/sewer 1.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
