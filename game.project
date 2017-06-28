@@ -3,7 +3,7 @@ title = Platformer with Ladders
 custom_resources = 
 
 [bootstrap]
-main_collection = /platformer_with_ladders/platformer_with_ladders.collectionc
+main_collection = /main/main.collectionc
 render = /render/main_render.renderc
 
 [input]

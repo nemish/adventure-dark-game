@@ -79,6 +79,6 @@ images {
 images {
   image: "/img/factory/sewer 1.png"
 }
-margin: 0
+margin: 2
 extrude_borders: 0
 inner_padding: 0

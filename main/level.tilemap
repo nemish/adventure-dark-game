@@ -1,4 +1,4 @@
-tile_set: "/platformer_with_ladders/platformer.tilesource"
+tile_set: "/main/platformer.tilesource"
 layers {
   id: "ground"
   z: 0.0

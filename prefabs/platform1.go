@@ -1,23 +1,8 @@
-components {
-  id: "script"
-  component: "/prefabs/box.script"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
 embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/img/factory/factory.atlas\"\n"
-  "default_animation: \"box\"\n"
+  "default_animation: \"platform 1\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -34,17 +19,16 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "co"
+  id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
-  "mass: 10.0\n"
-  "friction: 50.0\n"
-  "restitution: 0.0\n"
-  "group: \"construction\"\n"
+  "type: COLLISION_OBJECT_TYPE_STATIC\n"
+  "mass: 0.0\n"
+  "friction: 0.1\n"
+  "restitution: 0.5\n"
+  "group: \"ground\"\n"
   "mask: \"player\"\n"
   "mask: \"construction\"\n"
-  "mask: \"ground\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -62,11 +46,11 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 175.0\n"
-  "  data: 175.0\n"
+  "  data: 775.0\n"
+  "  data: 450.0\n"
   "  data: 10.0\n"
   "}\n"
-  "linear_damping: 100.0\n"
+  "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
   ""

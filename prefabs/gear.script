@@ -1,29 +1,11 @@
+go.property("speed", 5)
+go.property("direction", hash("left"))
+
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
+    z = go.get(".", "euler.z")
+    multiplier = 1
+    if self.direction == hash("left") then
+        multiplier = -1
+    end
+    go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, z + (360 * multiplier), go.EASING_LINEAR, self.speed)
 end

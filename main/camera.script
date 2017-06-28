@@ -17,7 +17,7 @@ end
 function update(self, dt)
     -- Calculate a new position based on current pos interpolated towards current
     -- target position.
-    self.pos = vmath.lerp(0.05, self.pos, self.look_at - vmath.vector3(400, 200, 0))
+    self.pos = vmath.lerp(0.05, self.pos, self.look_at - vmath.vector3(450, 270, 0))
     -- self.pos = vmath.lerp(0.03, self.pos, self.look_at)
     -- self.pos.z = 500
     self.pos.z = self.initial_position.z

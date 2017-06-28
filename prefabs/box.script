@@ -1,0 +1,38 @@
+function init(self)
+	-- Add initialization code here
+	-- Remove this function if not needed
+    self.velocity = vmath.vector3(0, 0, 0);
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+    -- local pos = go.get_position() + self.velocity * dt
+    -- print("velocity box", self.velocity, pos)
+    -- go.set_position(pos)
+    -- msg.post("#co", "apply_force", {force = self.velocity, position = go.get_world_position()})
+end
+
+function on_message(self, message_id, message, sender)
+    -- if message_id == hash("collision_response") and message.group == hash("player") then
+    --     msg.post("/player#player", "can_push", { mass = 100 })
+    --     self.velocity.x = 1
+    -- end
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
