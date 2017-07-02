@@ -1,169 +1,9 @@
 name: "default"
 instances {
-  id: "bar"
-  prototype: "/prefabs/bar.go"
-  position {
-    x: 1028.693
-    y: 4.84
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "bar1"
-  prototype: "/prefabs/bar.go"
-  position {
-    x: 1748.755
-    y: 179.618
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.25881904
-    w: 0.9659258
-  }
-  scale3 {
-    x: 0.5
-    y: 0.5
-    z: 1.0
-  }
-}
-instances {
-  id: "pipe"
-  prototype: "/prefabs/pipe.go"
-  position {
-    x: 1133.217
-    y: 253.741
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "pipe1"
-  prototype: "/prefabs/pipe.go"
-  position {
-    x: 1284.447
-    y: 153.009
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 0.5
-    y: 0.5
-    z: 1.0
-  }
-}
-instances {
-  id: "pipe2"
-  prototype: "/prefabs/pipe.go"
-  position {
-    x: 1255.92
-    y: 504.044
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.9238795
-    w: 0.38268343
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "bar2"
-  prototype: "/prefabs/bar.go"
-  position {
-    x: 1954.111
-    y: 678.159
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.42261827
-    w: 0.9063078
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chain"
-  prototype: "/prefabs/chain.go"
-  position {
-    x: 1433.683
-    y: 1024.559
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 3.0
-    y: 3.0
-    z: 0.0
-  }
-}
-instances {
-  id: "box"
-  prototype: "/prefabs/box.go"
-  position {
-    x: 410.419
-    y: 175.881
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 0.3
-    y: 0.3
-    z: 1.0
-  }
-}
-instances {
   id: "bar3"
   prototype: "/prefabs/bar.go"
   position {
-    x: -1081.246
+    x: -1529.032
     y: 170.281
     z: 0.0
   }
@@ -183,7 +23,7 @@ instances {
   id: "bar4"
   prototype: "/prefabs/bar.go"
   position {
-    x: -1079.434
+    x: -1527.22
     y: -14.203
     z: 0.0
   }
@@ -203,7 +43,7 @@ instances {
   id: "platform1"
   prototype: "/prefabs/platform1.go"
   position {
-    x: -4.735
+    x: -452.521
     y: -331.405
     z: 0.0
   }
@@ -223,8 +63,8 @@ instances {
   id: "gear_active"
   prototype: "/prefabs/gear_active.go"
   position {
-    x: -258.304
-    y: 403.459
+    x: -178.801
+    y: 130.383
     z: 0.0
   }
   rotation {
@@ -243,8 +83,8 @@ instances {
   id: "gear_active1"
   prototype: "/prefabs/gear_active.go"
   position {
-    x: -526.931
-    y: 494.604
+    x: -460.75
+    y: 111.42
     z: 0.0
   }
   rotation {
@@ -264,6 +104,306 @@ instances {
   scale3 {
     x: 1.0
     y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform11"
+  prototype: "/prefabs/platform1.go"
+  position {
+    x: 1047.742
+    y: 425.281
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "box"
+  prototype: "/prefabs/box.go"
+  position {
+    x: -675.461
+    y: 191.799
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "elevator"
+  prototype: "/prefabs/elevator.go"
+  position {
+    x: 5.021
+    y: 143.237
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1213.102
+    y: 1348.901
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar1"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1912.283
+    y: 1350.76
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: 214.492
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe1"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: 607.364
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe2"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: -153.936
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe_turn"
+  prototype: "/prefabs/pipe_turn.go"
+  position {
+    x: 930.146
+    y: 1278.023
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: -1.0
+    y: 1.0
+    z: -1.0
+  }
+}
+instances {
+  id: "bar2"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: -564.019
+    y: 1124.207
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain_line"
+  prototype: "/prefabs/chain_line.go"
+  position {
+    x: -445.739
+    y: 1623.164
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain1"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: 395.278
+    y: 1449.744
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain_line1"
+  prototype: "/prefabs/chain_line.go"
+  position {
+    x: 1141.558
+    y: 1793.477
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain2"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: 1951.285
+    y: 1463.247
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_fg"
+  prototype: "/prefabs/chaing_fg.go"
+  position {
+    x: 1048.343
+    y: 912.194
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 3.0
+    y: 3.0
     z: 1.0
   }
 }
@@ -335,7 +475,7 @@ embedded_instances {
   ""
   position {
     x: 688.921
-    y: 606.74
+    y: 493.275
     z: -0.5
   }
   rotation {
@@ -485,7 +625,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 39.368
+    x: -1081.051
     y: 174.777
     z: 0.1
   }
@@ -558,11 +698,17 @@ embedded_instances {
   children: "bar2"
   children: "bar3"
   children: "bar4"
+  children: "chain1"
+  children: "chain2"
+  children: "chain_line"
+  children: "chain_line1"
   children: "go2"
   children: "pipe"
   children: "pipe1"
   children: "pipe2"
+  children: "pipe_turn"
   children: "platform1"
+  children: "platform11"
   data: ""
   position {
     x: -147.991
@@ -584,6 +730,7 @@ embedded_instances {
 embedded_instances {
   id: "env"
   children: "box"
+  children: "elevator"
   children: "gear_active"
   children: "gear_active1"
   data: ""
@@ -606,8 +753,23 @@ embedded_instances {
 }
 embedded_instances {
   id: "fg"
-  children: "chain"
-  data: ""
+  children: "chaing_fg"
+  data: "components {\n"
+  "  id: \"parallax\"\n"
+  "  component: \"/prefabs/parallax.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
   position {
     x: -1271.146
     y: -335.089
@@ -708,6 +870,41 @@ embedded_instances {
 embedded_instances {
   id: "go2"
   data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"gui\"\n"
+  "  component: \"/gui/health.gui\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
   position {
     x: 0.0
     y: 0.0

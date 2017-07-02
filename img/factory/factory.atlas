@@ -79,6 +79,9 @@ images {
 images {
   image: "/img/factory/sewer 1.png"
 }
+images {
+  image: "/img/factory/chain 2 blur.png"
+}
 margin: 2
 extrude_borders: 0
 inner_padding: 0

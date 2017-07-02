@@ -41,7 +41,7 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.5\n"
   "restitution: 0.5\n"
-  "group: \"construction\"\n"
+  "group: \"construction1\"\n"
   "mask: \"player\"\n"
   "mask: \"ground\"\n"
   "embedded_collision_shape {\n"

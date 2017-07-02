@@ -7,5 +7,5 @@ function init(self)
     if self.direction == hash("left") then
         multiplier = -1
     end
-    go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, z + (360 * multiplier), go.EASING_LINEAR, self.speed)
+    -- go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, z + (360 * multiplier), go.EASING_LINEAR, self.speed)
 end

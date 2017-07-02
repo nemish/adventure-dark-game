@@ -1,0 +1,25 @@
+function init(self)
+    self.speed = 4
+    self.pos_y = go.get_position().y
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("elevator_up") then
+        go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, self.pos_y + message.height, go.EASING_LINEAR, self.speed)
+    end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
