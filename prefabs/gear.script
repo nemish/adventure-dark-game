@@ -1,11 +1,48 @@
-go.property("speed", 5)
+go.property("speed", 60)
 go.property("direction", hash("left"))
 
 function init(self)
-    z = go.get(".", "euler.z")
-    multiplier = 1
+    go.set("#sprite", "tint.w", 0.7)
+    self.original_rot = go.get_rotation()
+    self.direction_multiplier = 0
+    self.t = 0
+end
+
+
+local function rotate(self, dt, direction_multiplier)
+    local multiplier = 1
     if self.direction == hash("left") then
         multiplier = -1
     end
-    -- go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, z + (360 * multiplier), go.EASING_LINEAR, self.speed)
+    self.t = self.t + dt
+    local speed = self.speed * multiplier * direction_multiplier
+    local step = math.floor(self.t * speed)
+    local angle = math.pi / 360 * step
+    local rot = vmath.quat_rotation_z(-angle)
+    go.set_rotation(rot * self.original_rot)
+end
+
+
+function update(self, dt)
+    if self.direction_multiplier ~= 0 then
+        rotate(self, dt, self.direction_multiplier)
+    end
+end
+
+
+local function stop_animate(self)
+    self.direction_multiplier = 0
+    self.t = 0
+    self.original_rot = go.get_rotation()
+end
+
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("elevator_start") then
+        self.begin = true
+        self.direction_multiplier = message.direction
+        -- start_animate(self, message.direction)
+    elseif message_id == hash("elevator_stop") then
+        stop_animate(self)
+    end
 end

@@ -1,4 +1,8 @@
 script: ""
+textures {
+  name: "images"
+  texture: "/img/images.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -7,8 +11,8 @@ background_color {
 }
 nodes {
   position {
-    x: 68.876
-    y: 593.642
+    x: 551.005
+    y: 308.3
     z: 0.0
     w: 1.0
   }
@@ -19,14 +23,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.3
-    y: 0.5
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 1800.0
+    y: 1200.0
     z: 0.0
     w: 1.0
   }
@@ -38,7 +42,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "images/adventure_cloak"
   id: "box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -55,7 +59,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.15
+  alpha: 0.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
 }

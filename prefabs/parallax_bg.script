@@ -1,0 +1,27 @@
+parallax_gos = {
+    ["bg_back"] = { 3, 0.5 },
+    ["bg_construction"] = { 1, 0.7 },
+    -- ["bg_mechanism"] = { 1, 1 }
+}
+
+function init(self)
+    self.velocity = vmath.vector3(0, 0, 0)
+end
+
+function update(self, dt)
+    if self.velocity.x ~= 0 or self.velocity.y ~= 0 then
+        for name, config in pairs(parallax_gos) do
+            count = config[1]
+            multiplier = config[2]
+            url = name
+            go.set_position(go.get_position(url) + self.velocity * multiplier * dt, url)
+        end
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("player_move") then
+        self.velocity.x = -message.velocity.x * 0.05
+        self.velocity.y = -message.velocity.y * 0.01
+    end
+end

@@ -22,6 +22,10 @@ key_trigger {
   input: KEY_S
   action: "slide"
 }
+key_trigger {
+  input: KEY_A
+  action: "attack"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_1
   action: "touch"

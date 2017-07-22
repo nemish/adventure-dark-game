@@ -82,6 +82,15 @@ images {
 images {
   image: "/img/factory/chain 2 blur.png"
 }
-margin: 2
+images {
+  image: "/img/factory/gear 1 blur.png"
+}
+images {
+  image: "/img/factory/BackGround image blur.png"
+}
+images {
+  image: "/img/factory/background structure 1 blur.png"
+}
+margin: 3
 extrude_borders: 0
 inner_padding: 0

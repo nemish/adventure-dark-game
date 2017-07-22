@@ -17,7 +17,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/img/factory/factory.atlas\"\n"
-  "default_animation: \"gear 1\"\n"
+  "default_animation: \"gear 1 blur\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

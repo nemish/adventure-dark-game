@@ -1,6 +1,10 @@
+local PLAYER_GROUP = hash("player")
+local GEARS = {"gear_active", "gear_active1"}
+
 function init(self)
     self.speed = 4
-    self.pos_y = go.get_position().y
+    self.animating = false
+    self.current_pos = 1
 end
 
 function update(self, dt)
@@ -8,9 +12,47 @@ function update(self, dt)
 	-- Remove this function if not needed
 end
 
+function on_stop(self, url, property)
+    self.animating = false
+    msg.post("/player", "elevator_stop")
+    for i, name in pairs(GEARS) do
+        msg.post("/" .. name, "elevator_stop")
+    end
+end
+
+
+local function activate(self)
+    go.set("#sprite", "tint.w", 0.7)
+    go.set("#sprite1", "tint.w", 0.7)
+end
+
+local function deactivate(self)
+    go.set("#sprite", "tint.w", 1)
+    go.set("#sprite1", "tint.w", 1)
+end
+
+
+local function do_elevate(self, height)
+    deactivate(self)
+    next_pos = go.get_position().y + height * self.current_pos
+    for i, name in pairs(GEARS) do
+        msg.post("/" .. name, "elevator_start", { direction = self.current_pos })
+    end
+    go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, next_pos, go.EASING_LINEAR, self.speed, 0, on_stop)
+    self.animating = true
+    self.current_pos = self.current_pos * -1
+end
+
+
 function on_message(self, message_id, message, sender)
-    if message_id == hash("elevator_up") then
-        go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, self.pos_y + message.height, go.EASING_LINEAR, self.speed)
+    if message_id == hash("elevator_trigger") and not self.animating then
+        do_elevate(self, message.height)
+    elseif message_id == hash("deactivate") then
+        deactivate(self)
+    elseif message_id == hash("activate") then
+        if not self.animating then
+            activate(self)
+        end
     end
 end
 

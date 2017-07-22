@@ -80,7 +80,7 @@ animations {
     image: "/player/img/PNG Sequences/Attacking/Attacking_011.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
-  fps: 20
+  fps: 30
   flip_horizontal: 0
   flip_vertical: 0
 }

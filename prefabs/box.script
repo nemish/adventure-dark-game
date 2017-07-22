@@ -13,7 +13,6 @@ function update(self, dt)
 	-- Add update code here
 	-- Remove this function if not needed
     -- local pos = go.get_position() + self.velocity * dt
-    -- print("velocity box", self.velocity, pos)
     -- go.set_position(pos)
     -- msg.post("#co", "apply_force", {force = self.velocity, position = go.get_world_position()})
 end

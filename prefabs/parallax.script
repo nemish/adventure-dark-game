@@ -1,5 +1,12 @@
+CHILDREN = {"chain_fg"}
+
+
 function init(self)
     self.velocity = vmath.vector3(0, 0, 0)
+    for i, child in pairs(CHILDREN) do
+        url = child .. "#sprite"
+        go.set(url, "tint.w", 0.9)
+    end
 end
 
 
@@ -12,16 +19,4 @@ function on_message(self, message_id, message, sender)
         self.velocity.x = -message.velocity.x * 1.5
         self.velocity.y = -message.velocity.y * 0.4
     end
-	-- Add message-handling code here
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
 end
