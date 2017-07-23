@@ -3,6 +3,7 @@ local gravityV3 = vmath.vector3(0, gravity, 0)
 local CONSTRUCTION_GROUP = hash("construction")
 local ELEVATOR_GROUP = hash("elevator")
 local GROUND_GROUP = hash("ground")
+local ENEMY_GROUP = hash("enemy")
 
 function init(self)
     -- go.set("#sprite", "saturation", vmath.vector4(1, 0, 0, 0))
@@ -22,6 +23,7 @@ function init(self)
 	self.actions = {}
     self.can_act = false
     self.elevator_id_standing_on = nil
+    self.hurt = false
 
     self.current_animation = nil -- the current animation
 end
@@ -43,40 +45,46 @@ end
 function update(self, dt)
     -- if self.attacking then
     --     return
-    if self.slide_start and os.clock() - self.slide_start < 0.2 then
-        if math.abs(self.velocity.x) < 20 then
-            self.slide_start = nil
-        else
-            play_animation(self, hash("Slide"))
-            multiplier = get_slide_direction(self)
 
-            if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
+    if self.hurt then
+        self.velocity.x = 150
+        play_animation(self, hash("Hurt"))
+    else
+        if self.slide_start and os.clock() - self.slide_start < 0.2 then
+            if math.abs(self.velocity.x) < 20 then
                 self.slide_start = nil
+            else
+                play_animation(self, hash("Slide"))
+                multiplier = get_slide_direction(self)
+                if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
+                    self.slide_start = nil
+                end
+                self.velocity.x = multiplier * 300
             end
-            self.velocity.x = multiplier * 300
+        elseif self.slide_start then
+            self.slide_start = nil
         end
-    elseif self.slide_start then
-        self.slide_start = nil
+
+        if not self.slide_start and not self.attacking and not self.hurt then
+            if self.actions[hash("left")] then
+                self.velocity.x = -200
+                sprite.set_hflip("#sprite", true)
+                if self.land_contact then
+                    play_animation(self, hash("Run"))
+                end
+            elseif self.actions[hash("right")] then
+                self.velocity.x = 200
+                sprite.set_hflip("#sprite", false)
+                if self.land_contact then
+                    play_animation(self, hash("Run"))
+                end
+            -- and clear it if we're not moving left/right
+            else
+                self.velocity.x = 0
+            end
+        end
     end
 
-    if not self.slide_start and not self.attacking then
-        if self.actions[hash("left")] then
-    		self.velocity.x = -200
-    		sprite.set_hflip("#sprite", true)
-            if self.land_contact then
-                play_animation(self, hash("Run"))
-            end
-    	elseif self.actions[hash("right")] then
-    		self.velocity.x = 200
-    		sprite.set_hflip("#sprite", false)
-            if self.land_contact then
-                play_animation(self, hash("Run"))
-            end
-    	-- and clear it if we're not moving left/right
-    	else
-    		self.velocity.x = 0
-        end
-	end
 
 	-- are we in contact with a ladder?
 	if self.ladder_contact then
@@ -99,7 +107,7 @@ function update(self, dt)
 		self.climbing = false
 	end
 
-    if not self.actions[hash("left")] and not self.actions[hash("right")] and self.land_contact and not self.slide_start then
+    if not self.actions[hash("left")] and not self.actions[hash("right")] and self.land_contact and not self.slide_start and not self.hurt and not self.attacking then
         play_animation(self, hash("Idle"))
     end
 
@@ -125,7 +133,7 @@ function update(self, dt)
 	self.ground_contact = false
 	self.ladder_contact = false
 
-    if math.abs(self.velocity.x) < 25 and vert_moving_finished(self) then
+    if math.abs(self.velocity.x) < 25 and vert_moving_finished(self) and not self.attacking then
         play_animation(self, hash("Idle"))
     end
 
@@ -163,7 +171,9 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("animation_done") then
-        if self.current_animation == hash("Attack") then
+        if self.current_animation == hash("Hurt") then
+            self.hurt = false
+        elseif self.current_animation == hash("Attack") then
             self.attacking = false
         elseif self.jump_start then
             play_animation(self, hash("JumpLoop"))
@@ -188,7 +198,10 @@ function on_message(self, message_id, message, sender)
             msg.post(self.elevator_id_standing_on, "activate")
         end
 	elseif message_id == hash("contact_point_response") then
-		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP) then
+		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == ENEMY_GROUP) then
+            if message.group == ENEMY_GROUP then
+                self.hurt = true
+            end
             handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("ladder") then
 			self.ladder_contact = true

@@ -1,0 +1,73 @@
+require "main.locomotion"
+
+IDLE = "Idle"
+MOVING = "Move"
+go.property("Distance", 200)
+
+
+function init(self)
+    self.state = IDLE
+    self.direction = 1
+    self.t = 0
+    do_init(self)
+end
+
+
+function update(self, dt)
+    self.t = self.t + dt
+    if self.t > 3 then
+        self.t = 0
+        if self.state == MOVING then
+            self.state = IDLE
+        elseif self.state == IDLE then
+            self.state = MOVING
+        end
+    elseif self.state == MOVING then
+        self.velocity.x = 100 * self.direction
+        sprite.set_hflip("#sprite", self.direction == 1)
+    elseif self.state == IDLE then
+        self.direction = self.direction * -1
+        self.velocity.x = 0
+    end
+
+    play_animation(self, hash(self.state))
+    -- play_animation(self, hash("Move"))
+
+    -- apply gravity if there's no ground contact and if we're not climbing a ladder
+    if not self.ground_contact then
+        self.velocity = self.velocity + gravityV3
+        if self.velocity.y < -240 then
+            -- play_animation(self, hash("FallDown"))
+        end
+    end
+
+    local pos = go.get_position() + self.velocity * dt
+
+    go.set_position(pos)
+
+    -- reset volatile state
+    self.correction = vmath.vector3()
+    self.ground_contact = false
+    self.ladder_contact = false
+
+    -- if math.abs(self.velocity.x) < 25 and vert_moving_finished(self) then
+    --     play_animation(self, hash("Idle"))
+    -- end
+
+    -- msg.post("/fg#parallax", "player_move", { velocity = self.velocity })
+    -- msg.post("/bg#parallax_bg", "player_move", { velocity = self.velocity })
+    -- msg.post("/camera#main_camera", "look_at", { position = pos })
+
+end
+
+
+
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("contact_point_response") then
+        if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == PLAYER_GROUP) then
+            handle_geometry_contact(self, message.normal, message.distance)
+        end
+    end
+end
+

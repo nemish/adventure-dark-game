@@ -270,6 +270,49 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "Hurt"
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hurt/Hurt_011.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

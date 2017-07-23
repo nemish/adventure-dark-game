@@ -24,6 +24,7 @@ embedded_components {
   "group: \"player\"\n"
   "mask: \"ground\"\n"
   "mask: \"construction\"\n"
+  "mask: \"enemy\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

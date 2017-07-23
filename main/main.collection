@@ -407,6 +407,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "gomunukul"
+  prototype: "/enemies/gomunukul.go"
+  position {
+    x: 48.45
+    y: 201.021
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "elevator"
   collection: "/prefabs/elevator.collection"
