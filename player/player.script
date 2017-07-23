@@ -12,6 +12,7 @@ function init(self)
 	self.velocity = vmath.vector3(0, 0, 0)
 	self.ground_contact = false
 	self.ladder_contact = false
+    self.direction = 1
     self.land_contact = false
     self.slide_start = nil
     self.slide_start_direction_int = nil
@@ -24,9 +25,16 @@ function init(self)
     self.can_act = false
     self.elevator_id_standing_on = nil
     self.hurt = false
+    self.direction = 1
+    self.hurt_direction = 1
+    self.enemies = {
+        [1] = nil,
+        [-1] = nil
+    }
 
     self.current_animation = nil -- the current animation
 end
+
 
 function final(self)
 	msg.post(".", "release_input_focus")
@@ -47,8 +55,10 @@ function update(self, dt)
     --     return
 
     if self.hurt then
-        self.velocity.x = 150
+        self.velocity.x = self.hurt_direction * 250
         play_animation(self, hash("Hurt"))
+    elseif self.attacking then
+        self.velocity.x = 0
     else
         if self.slide_start and os.clock() - self.slide_start < 0.2 then
             if math.abs(self.velocity.x) < 20 then
@@ -67,12 +77,14 @@ function update(self, dt)
 
         if not self.slide_start and not self.attacking and not self.hurt then
             if self.actions[hash("left")] then
+                self.direction = -1
                 self.velocity.x = -200
                 sprite.set_hflip("#sprite", true)
                 if self.land_contact then
                     play_animation(self, hash("Run"))
                 end
             elseif self.actions[hash("right")] then
+                self.direction = 1
                 self.velocity.x = 200
                 sprite.set_hflip("#sprite", false)
                 if self.land_contact then
@@ -116,6 +128,7 @@ function update(self, dt)
 		self.velocity = self.velocity + gravityV3
         if self.velocity.y < -240 then
             play_animation(self, hash("FallDown"))
+            self.hurt = false
         end
 	end
 
@@ -179,8 +192,8 @@ function on_message(self, message_id, message, sender)
             play_animation(self, hash("JumpLoop"))
             self.jump_start = false
         end
-    elseif message_id == hash("trigger_response") and sender.fragment == hash("ground_checker") then
-        if message.group == ELEVATOR_GROUP then
+    elseif message_id == hash("trigger_response") then
+        if sender.fragment == hash("ground_checker") and message.group == ELEVATOR_GROUP then
             self.elevator_id_standing_on = message.other_id
             if message.enter then
                 msg.post(self.elevator_id_standing_on, "activate")
@@ -188,6 +201,10 @@ function on_message(self, message_id, message, sender)
                 msg.post(self.elevator_id_standing_on, "deactivate")
                 self.elevator_id_standing_on = nil
             end
+        elseif sender.fragment == hash("right_checker") or sender.fragment == hash("left_checker") then
+            local enemy = message.enter and message.other_id or nil
+            local sign = sender.fragment == hash("right_checker") and 1 or -1
+            self.enemies[sign] = enemy
         end
     elseif message_id == hash("collision_response") and sender.fragment == hash("ground_checker") then
         self.land_contact = true
@@ -199,10 +216,12 @@ function on_message(self, message_id, message, sender)
         end
 	elseif message_id == hash("contact_point_response") then
 		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == ENEMY_GROUP) then
-            if message.group == ENEMY_GROUP then
-                self.hurt = true
-            end
             handle_geometry_contact(self, message.normal, message.distance)
+            if message.group == ENEMY_GROUP and not self.hurt then
+                self.hurt_direction = (go.get_position(message.other_id).x - go.get_position().x) > 0 and -1 or 1
+                self.hurt = true
+                self.velocity.y = 150
+            end
 		elseif message.group == hash("ladder") then
 			self.ladder_contact = true
 		end
@@ -225,7 +244,20 @@ function get_slide_direction(self)
 end
 
 function on_input(self, action_id, action)
+
 	if action_id then
+        if self.hurt then
+            if (action_id == hash("left") or action_id == hash("right")) then
+                -- set/clear action in map of all actions
+                if action.pressed then
+                    self.actions[action_id] = true
+                    self.move_begin = true
+                elseif action.released then
+                    self.actions[action_id] = nil
+                end
+            end
+            return
+        end
 		-- set/clear action in map of all actions
 		if action.pressed then
 			self.actions[action_id] = true
@@ -252,6 +284,10 @@ function on_input(self, action_id, action)
         elseif action_id == hash("attack") and action.pressed then
             self.attacking = true
             play_animation(self, hash("Attack"))
+            local enemyId = self.enemies[self.direction]
+            if enemyId then
+                msg.post(enemyId, "damage", { direction = self.direction })
+            end
         elseif action_id == hash("trigger") and action.pressed then
             if not self.land_contact and not self.second_jump then
                 self.velocity.y = 800
