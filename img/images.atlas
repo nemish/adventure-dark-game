@@ -1,6 +1,12 @@
 images {
   image: "/img/adventure_cloak.png"
 }
+images {
+  image: "/img/factory/gear 4.png"
+}
+images {
+  image: "/img/gear 4 white.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

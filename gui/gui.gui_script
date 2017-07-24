@@ -1,0 +1,32 @@
+
+function init(self)
+    local my_node = gui.get_node("cloak")
+    gui.animate(my_node, "color.w", 0.05, gui.EASING_LINEAR, 1, 0.5)
+end
+
+local function reload_level()
+    msg.post("main:/game_controller", "reload_level")
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("set_health") then
+        if message.health < 0 then
+            return
+        end
+
+        if message.health == 0 then
+            local my_node = gui.get_node("cloak")
+            gui.animate(my_node, "color.w", 0.5, gui.EASING_LINEAR, 2, 0, reload_level)
+        end
+
+        for i = 3, message.health + 1, -1 do
+            local my_node = gui.get_node("health" .. i)
+            gui.animate(my_node, "color.w", 0, gui.EASING_LINEAR, 0.5)
+        end
+
+        for j = 1, message.health do
+            local my_node = gui.get_node("health" .. j)
+            gui.animate(my_node, "color.w", 1, gui.EASING_LINEAR, 0.5)
+        end
+    end
+end

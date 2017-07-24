@@ -1,3 +1,9 @@
+
+local function calc_pos(pos)
+    return pos - vmath.vector3(450, 270, 0)
+end
+
+
 function init(self)
     msg.post("#camera_comp", "acquire_camera_focus")
 
@@ -9,6 +15,7 @@ function init(self)
 
     -- Store current position and set target pos to the same since wanna start
     -- at a stand-still.
+    self.is_initialized = false
     self.initial_position = go.get_world_position()
     self.pos = go.get_world_position()
     self.look_at = self.pos
@@ -17,16 +24,26 @@ end
 function update(self, dt)
     -- Calculate a new position based on current pos interpolated towards current
     -- target position.
-    self.pos = vmath.lerp(0.05, self.pos, self.look_at - vmath.vector3(450, 270, 0))
-    -- self.pos = vmath.lerp(0.03, self.pos, self.look_at)
-    -- self.pos.z = 500
-    self.pos.z = self.initial_position.z
-    -- print(self.pos, go.get_position())
-    go.set_position(self.pos)
+    if not self.is_initialized then
+        self.pos = vmath.lerp(0.05, self.pos, calc_pos(self.look_at, pos))
+        -- self.pos = vmath.lerp(0.03, self.pos, self.look_at)
+        -- self.pos.z = 500
+        self.pos.z = self.initial_position.z
+        -- print(self.pos, go.get_position())
+        go.set_position(self.pos)
+    else
+        local pos = calc_pos(self.look_at)
+        pos.z = self.initial_position.z
+        go.set_position(pos)
+    end
 end
+
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("look_at") then
+        if message.initial then
+            self.is_initialized = true
+        end
         self.look_at = message.position
     elseif message_id == hash("screen_height") then
         print("screen_height", message.height)

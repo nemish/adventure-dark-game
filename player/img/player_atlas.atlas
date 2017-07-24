@@ -313,6 +313,58 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "Die"
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_011.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_012.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_013.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Dying/Dying_014.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

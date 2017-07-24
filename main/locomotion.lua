@@ -26,7 +26,6 @@ function do_init(self)
 end
 
 
--- play animation unless the same animation is already playing
 function play_animation(self, animation)
     if self.current_animation ~= animation then
         self.current_animation = animation
@@ -35,9 +34,6 @@ function play_animation(self, animation)
 end
 
 
-
-
--- from the platformer tutorial on defold.com
 function handle_geometry_contact(self, normal, distance)
     local proj = vmath.dot(self.correction, normal)
     local comp = (distance - proj) * normal

@@ -1,0 +1,18 @@
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    msg.post("#level1proxy", "load")
+end
+
+function final(self)
+    msg.post(".", "release_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("reload_level") then
+        msg.post("#level1proxy", "unload")
+    elseif message_id == hash("proxy_loaded") then
+        msg.post(sender, "enable")
+    elseif message_id == hash("proxy_unloaded") then
+        msg.post("#level1proxy", "load")
+    end
+end

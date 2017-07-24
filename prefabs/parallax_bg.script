@@ -1,7 +1,6 @@
 parallax_gos = {
     ["bg_back"] = { 3, 0.5 },
     ["bg_construction"] = { 1, 0.7 },
-    -- ["bg_mechanism"] = { 1, 1 }
 }
 
 function init(self)
