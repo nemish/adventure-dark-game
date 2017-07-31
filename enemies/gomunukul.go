@@ -46,6 +46,7 @@ embedded_components {
   "mask: \"construction\"\n"
   "mask: \"player\"\n"
   "mask: \"player_trigger\"\n"
+  "mask: \"bullet\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"

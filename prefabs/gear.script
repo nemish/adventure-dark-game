@@ -1,4 +1,4 @@
-go.property("speed", 60)
+go.property("speed", 260)
 go.property("direction", hash("left"))
 
 function init(self)
@@ -41,7 +41,6 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("elevator_start") then
         self.begin = true
         self.direction_multiplier = message.direction
-        -- start_animate(self, message.direction)
     elseif message_id == hash("elevator_stop") then
         stop_animate(self)
     end

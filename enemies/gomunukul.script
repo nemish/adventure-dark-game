@@ -98,12 +98,13 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash("damage") then
         self.t = 0
-        if self.health <= 1 then
+        if self.health <= 0 then
             self.state = DEAD
             play_animation(self, hash("Die1"))
+            msg.post(sender, "enemy_dead", { enemy_id = go.get_id() })
         else
             self.state = DAMAGED
-            self.health = self.health - 1
+            self.health = self.health - (message.damage or 1)
             go.animate("#sprite", "tint", go.PLAYBACK_ONCE_PINGPONG, vmath.vector4(1, 0.3, 0.3, 1), go.EASING_LINEAR, 0.3)
         end
         self.damage_direction = message.direction

@@ -1,3 +1,6 @@
+images {
+  image: "/player/img/Range Weapon.png"
+}
 animations {
   id: "Idle"
   images {
@@ -359,6 +362,49 @@ animations {
   }
   images {
     image: "/player/img/PNG Sequences/Dying/Dying_014.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Throw"
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Throwing/Throwing_011.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 30

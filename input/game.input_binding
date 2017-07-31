@@ -8,7 +8,7 @@ key_trigger {
 }
 key_trigger {
   input: KEY_SPACE
-  action: "trigger"
+  action: "jump"
 }
 key_trigger {
   input: KEY_LEFT
@@ -19,12 +19,16 @@ key_trigger {
   action: "right"
 }
 key_trigger {
-  input: KEY_S
-  action: "slide"
+  input: KEY_E
+  action: "action"
 }
 key_trigger {
   input: KEY_A
   action: "attack"
+}
+key_trigger {
+  input: KEY_S
+  action: "distance_attack"
 }
 mouse_trigger {
   input: MOUSE_BUTTON_1
