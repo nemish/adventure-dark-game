@@ -1,10 +1,5 @@
 gravity = -20
 gravityV3 = vmath.vector3(0, gravity, 0)
-CONSTRUCTION_GROUP = hash("construction")
-ELEVATOR_GROUP = hash("elevator")
-GROUND_GROUP = hash("ground")
-ENEMY_GROUP = hash("enemy")
-PLAYER_GROUP = hash("player")
 
 function do_init(self)
     self.velocity = vmath.vector3(0, 0, 0)
@@ -38,7 +33,9 @@ function handle_geometry_contact(self, normal, distance)
     local proj = vmath.dot(self.correction, normal)
     local comp = (distance - proj) * normal
     self.correction = self.correction + comp
-    go.set_position(go.get_position() + comp)
+    self.pos = self.pos + comp
+    go.set_position(self.pos)
+
     self.ground_angle_y = normal.y
     self.ground_angle_x = normal.x
     if normal.y > 0.7 then
@@ -53,4 +50,7 @@ function handle_geometry_contact(self, normal, distance)
 end
 
 
-
+function updatePos(self, dt)
+    self.pos = self.pos + self.velocity * dt
+    go.set_position(self.pos)
+end

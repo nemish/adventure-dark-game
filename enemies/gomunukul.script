@@ -1,4 +1,5 @@
 require "main.locomotion"
+require "main.constants"
 
 go.property("health", 2)
 
@@ -15,6 +16,7 @@ function init(self)
     self.state = IDLE
     self.direction = -1
     self.t = 0
+    self.pos = go.get_position()
     do_init(self)
 end
 
@@ -67,22 +69,15 @@ function update(self, dt)
         -- apply gravity if there's no ground contact and if we're not climbing a ladder
         if not self.ground_contact then
             self.velocity = self.velocity + gravityV3
-            if self.velocity.y < -240 then
-                -- play_animation(self, hash("FallDown"))
-            end
         end
     end
 
-    local pos = go.get_position() + self.velocity * dt
-
-    go.set_position(pos)
+    updatePos(self, dt)
 
     self.correction = vmath.vector3()
     self.ground_contact = false
     self.ladder_contact = false
 end
-
-
 
 
 function on_message(self, message_id, message, sender)
@@ -98,13 +93,13 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash("damage") then
         self.t = 0
+        self.health = self.health - (message.damage or 1)
         if self.health <= 0 then
             self.state = DEAD
             play_animation(self, hash("Die1"))
             msg.post(sender, "enemy_dead", { enemy_id = go.get_id() })
         else
             self.state = DAMAGED
-            self.health = self.health - (message.damage or 1)
             go.animate("#sprite", "tint", go.PLAYBACK_ONCE_PINGPONG, vmath.vector4(1, 0.3, 0.3, 1), go.EASING_LINEAR, 0.3)
         end
         self.damage_direction = message.direction

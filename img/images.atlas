@@ -7,6 +7,9 @@ images {
 images {
   image: "/img/gear 4 white.png"
 }
+images {
+  image: "/player/img/player_bg.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

@@ -411,6 +411,49 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "Splash"
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Smoke/Smoke_011.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

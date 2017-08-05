@@ -28,6 +28,8 @@ embedded_instances {
   "group: \\\"construction\\\"\\n"
   "mask: \\\"player\\\"\\n"
   "mask: \\\"enemy\\\"\\n"
+  "mask: \\\"bullet\\\"\\n"
+  "mask: \\\"construction\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"

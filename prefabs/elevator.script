@@ -4,8 +4,6 @@ go.property("height", 400)
 
 
 local function updateLabel(self)
-    -- text = self.current_pos == 1 and "Up" or "Down"
-    -- label.set_text("#label", "Push " .. text .. " arrow to activate...")
     label.set_text("#label", "Push 'Action' button to activate...")
 end
 
@@ -28,10 +26,16 @@ function on_stop(self, url, property)
 end
 
 
+function update(self, dt)
+    if self.animating then
+        print('ELEVATOR_GROUP', go.get_position())
+        -- msg.post('/player', 'movable_move', { position = go.get_position() })
+    end
+end
+
+
 local function activate(self)
     msg.post("#label", "enable")
-    -- updateLabel(self)
-    -- go.set("#label", "Text", "Hello!")
 end
 
 
@@ -54,9 +58,7 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("elevator_trigger") and not self.animating then
-        -- do_elevate(self, message.height)
         do_elevate(self, self.height)
-        -- updateLabel(self)
     elseif message_id == hash("deactivate") then
         deactivate(self)
     elseif message_id == hash("activate") then

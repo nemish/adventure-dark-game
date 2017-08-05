@@ -1,4 +1,4 @@
-require "main.locomotion"
+require "main.constants"
 
 gravityV3Local = vmath.vector3(0, -5, 0)
 
@@ -13,22 +13,29 @@ function init(self)
     go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, -360, go.EASING_LINEAR, 0.3)
 end
 
-
 function update(self, dt)
     self.t = self.t + dt
+    if self.t > 3 then
+        go.delete()
+    end
     self.velocity = self.velocity + gravityV3Local
     self.pos = self.pos + self.velocity * dt
     go.set_position(self.pos)
 end
 
+local function do_splash(self)
+    factory.create('#splash_factory', go.get_position())
+end
+
 function on_message(self, message_id, message, sender)
     if message_id == hash("trigger_response") then
-        if message.group == ENEMY_GROUP then
+        if message.enter and message.group == ENEMY_GROUP then
             msg.post(message.other_id, 'damage', {
                 damage = 0.5,
                 direction = self.direction
             })
         end
+        do_splash()
         go.delete()
     end
 end

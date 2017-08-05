@@ -1,0 +1,15 @@
+require "main.locomotion"
+
+function init(self)
+    self.current_animation = nil
+    play_animation(self, hash('Splash'))
+end
+
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("animation_done") then
+        if self.current_animation == hash('Splash') then
+            go.delete()
+        end
+    end
+end

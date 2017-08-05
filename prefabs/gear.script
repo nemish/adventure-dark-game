@@ -1,4 +1,4 @@
-go.property("speed", 260)
+go.property("speed", 60)
 go.property("direction", hash("left"))
 
 function init(self)
