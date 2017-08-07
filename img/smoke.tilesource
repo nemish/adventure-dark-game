@@ -1,0 +1,19 @@
+image: "/img/cool_smoke.png"
+tile_width: 256
+tile_height: 512
+tile_margin: 2
+tile_spacing: 0
+collision: ""
+material_tag: "tile"
+collision_groups: "smoke_tilesource"
+animations {
+  id: "anim"
+  start_tile: 1
+  end_tile: 14
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+extrude_borders: 2
+inner_padding: 0

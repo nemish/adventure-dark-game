@@ -15,6 +15,7 @@ LEFT_ACTION_HASH = hash("left")
 RIGHT_ACTION_HASH = hash("right")
 UP_ACTION_HASH = hash("up")
 DOWN_ACTION_HASH = hash("down")
+ATTACK_ACTION_HASH = hash("attack")
 
 GROUND_CHECKER_HASH = hash("ground_checker")
 RIGHT_CHECKER_HASH = hash("right_checker")
@@ -24,8 +25,6 @@ LEFT_CHECKER_HASH = hash("left_checker")
 go.property("health", 3)
 
 function init(self)
-    -- go.set("#sprite", "saturation", vmath.vector4(1, 0, 0, 0))
-    -- go.set("#sprite1", "tint.w", 0.7)
 	msg.post(".", "acquire_input_focus")
     self.direction = 1
     self.hurt = false
@@ -58,9 +57,6 @@ end
 
 
 function update(self, dt)
-    -- if self.attacking then
-    --     return
-
     if self.finally_dead then
         self.velocity.x = 0
     elseif self.dead then
@@ -157,10 +153,14 @@ function update(self, dt)
         play_animation(self, IDLE_ANIM_HASH)
     end
 
-    msg.post("level1:/fg#parallax", "player_move", { velocity = self.velocity })
-    msg.post("level1:/bg#parallax_bg", "player_move", { velocity = self.velocity })
-    msg.post("level1:/camera#main_camera", "look_at", { position = self.pos })
-    msg.post("player_lighting", "look_at", { position = self.pos })
+    if not self.dead_by_fall then
+        local worldPos = go.get_world_position()
+        msg.post("level1:/fg#parallax", "player_move", { velocity = self.velocity })
+        msg.post("level1:/bg#parallax_bg", "player_move", { velocity = self.velocity })
+        msg.post("level1:/camera", "look_at", { position = worldPos })
+        msg.post("level1:/bottom_cleaner", "look_at", { position = worldPos })
+        msg.post("player_lighting", "look_at", { position = worldPos })
+    end
 end
 
 
@@ -183,17 +183,21 @@ function on_message(self, message_id, message, sender)
             self.jump_start = false
         end
     elseif message_id == TRIGGER_RESPONSE_HASH then
+
         if sender.fragment == GROUND_CHECKER_HASH and message.group == ELEVATOR_GROUP then
             self.movable_id_standing_on = message.other_id
             if message.enter then
-                -- msg.post('.', 'set_parent', { parent_id = self.movable_id_standing_on })
-                -- msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_id_standing_on })
+                msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_id_standing_on })
+                local pos = go.get_position(self.movable_id_standing_on)
                 msg.post(self.movable_id_standing_on, "activate")
+                self.pos.y = self.pos.y - pos.y
+                self.pos.z = self.pos.z + 0.3
             else
-                -- msg.post('.', 'set_parent')
-                -- msg.post('.', 'set_parent', { keep_world_transform = 1 })
-                msg.post(self.movable_id_standing_on, "deactivate")
+                local pos = go.get_position(self.movable_id_standing_on)
+                self.pos.y = self.pos.y + pos.y
+                msg.post('.', 'set_parent', { keep_world_transform = 1 })
                 self.movable_id_standing_on = nil
+                self.pos.z = self.pos.z - 0.3
             end
         elseif sender.fragment == GROUND_CHECKER_HASH and message.enter then
             self.land_contact = true
@@ -217,6 +221,9 @@ function on_message(self, message_id, message, sender)
         if self.movable_id_standing_on then
             msg.post(self.movable_id_standing_on, "activate")
         end
+    elseif message_id == hash('bottom_clear') then
+        self.dead_by_fall = true
+        msg.post("level1:/gui#gui", "player_dead")
 	elseif message_id == CONTACT_POINT_RESPONSE_HASH then
 		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == ENEMY_GROUP) then
             handle_geometry_contact(self, message.normal, message.distance)
@@ -227,6 +234,7 @@ function on_message(self, message_id, message, sender)
                 self.health = self.health - 1
                 msg.post("level1:/gui#gui", "set_health", { health = self.health })
                 if self.health <= 0 then
+                    msg.post("level1:/gui#gui", "player_dead")
                     self.dead = true
                 end
             end
@@ -291,7 +299,7 @@ function on_input(self, action_id, action)
             self.attacking = true
             play_animation(self, THROW_ANIM_HASH)
             throw_suriken(self)
-        elseif action_id == ATTACK_ANIM_HASH and action.pressed and self.land_contact then
+        elseif action_id == ATTACK_ACTION_HASH and action.pressed and self.land_contact then
             self.attacking = true
             play_animation(self, ATTACK_ANIM_HASH)
             local enemyId = self.enemies[self.direction]

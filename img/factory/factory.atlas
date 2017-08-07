@@ -1,10 +1,4 @@
 images {
-  image: "/img/factory/BackGround image.png"
-}
-images {
-  image: "/img/factory/BackGround image.png"
-}
-images {
   image: "/img/factory/background structure 1.png"
 }
 images {
@@ -90,6 +84,9 @@ images {
 }
 images {
   image: "/img/factory/background structure 1 blur.png"
+}
+images {
+  image: "/img/factory/box_action_bg.png"
 }
 margin: 3
 extrude_borders: 0

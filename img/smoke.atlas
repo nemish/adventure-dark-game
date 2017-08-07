@@ -1,0 +1,82 @@
+animations {
+  id: "Idle"
+  images {
+    image: "/img/smoke_effects/S-png/8/80000.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80001.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80002.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80003.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80004.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80005.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80006.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80007.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80008.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80009.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80010.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80011.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80012.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80013.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80014.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80015.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80016.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80017.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80018.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80019.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80020.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80021.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80022.png"
+  }
+  images {
+    image: "/img/smoke_effects/S-png/8/80023.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

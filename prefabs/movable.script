@@ -1,0 +1,56 @@
+require 'main.constants'
+require 'main.locomotion'
+
+function init(self)
+    do_init(self)
+    self.pos = go.get_position()
+    go.set('#action_bg', "scale.x", 0.8)
+    go.set('#action_bg', "scale.y", 0.8)
+    go.set('#action_bg', "tint.w", 0)
+	-- Add initialization code here
+	-- Remove this function if not needed
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- self.correction = vmath.vector3()
+end
+
+
+function hide_action_bg(self)
+    animate_action_bg(self, 0)
+end
+
+function show_action_bg(self)
+    animate_action_bg(self, 0.8)
+end
+
+function animate_action_bg(self, value)
+    go.animate('#action_bg', 'tint.w', go.PLAYBACK_ONCE_FORWARD, value, go.EASING_LINEAR, 0.1)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == TRIGGER_RESPONSE_HASH and message.group == PLAYER_SENSE_GROUP then
+        if message.enter then
+            msg.post(message.other_id, 'can_act', { action_type = hash('push'), obj = go.get_id() })
+            show_action_bg(self)
+        else
+            msg.post(message.other_id, 'can_act', { action_type = hash('push'), obj = nil })
+            hide_action_bg(self)
+        end
+    end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

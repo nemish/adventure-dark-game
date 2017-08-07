@@ -1,4 +1,5 @@
-local PLAYER_GROUP = hash("player")
+require 'main.constants'
+
 local GEARS = {"gear_active", "gear_active1"}
 go.property("height", 400)
 
@@ -19,7 +20,7 @@ end
 
 function on_stop(self, url, property)
     self.animating = false
-    msg.post("/player", "elevator_stop")
+    msg.post(PLAYER_URL, "elevator_stop")
     for i, name in pairs(GEARS) do
         msg.post("/" .. name, "elevator_stop")
     end
@@ -27,10 +28,9 @@ end
 
 
 function update(self, dt)
-    if self.animating then
-        print('ELEVATOR_GROUP', go.get_position())
-        -- msg.post('/player', 'movable_move', { position = go.get_position() })
-    end
+    -- if self.animating then
+    --     msg.post(PLAYER_URL, 'movable_move', { position = go.get_world_position(), obj_id = go.get_id() })
+    -- end
 end
 
 
@@ -50,8 +50,8 @@ local function do_elevate(self, height)
     for i, name in pairs(GEARS) do
         msg.post("/" .. name, "elevator_start", { direction = self.current_pos })
     end
-    go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, next_pos, go.EASING_LINEAR, self.speed, 0, on_stop)
     self.animating = true
+    go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, next_pos, go.EASING_LINEAR, self.speed, 0, on_stop)
     self.current_pos = self.current_pos * -1
 end
 

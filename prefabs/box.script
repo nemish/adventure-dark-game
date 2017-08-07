@@ -1,7 +1,9 @@
+require 'main.constants'
+
 function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
-    self.velocity = vmath.vector3(0, 0, 0);
+    -- self.velocity = vmath.vector3(0, 0, 0);
 end
 
 function final(self)
@@ -19,7 +21,7 @@ end
 
 function on_message(self, message_id, message, sender)
     -- if message_id == hash("collision_response") and message.group == hash("player") then
-    --     msg.post("/player#player", "can_push", { mass = 100 })
+    --     msg.post(PLAYER_URL, "can_push", { mass = 100 })
     --     self.velocity.x = 1
     -- end
 	-- Add message-handling code here

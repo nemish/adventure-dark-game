@@ -1,0 +1,26 @@
+require 'main.constants'
+
+function init(self)
+    self.pos = go.get_position()
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == TRIGGER_RESPONSE_HASH and message.enter then
+        msg.post(message.other_id, 'bottom_clear')
+    elseif message_id == hash('look_at') then
+        go.set_position(vmath.vector3(message.position.x, self.pos.y, self.pos.z))
+    end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
