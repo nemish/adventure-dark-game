@@ -37,6 +37,7 @@ function init(self)
     self.duration = 1
     self.pos = go.get_position()
     self.initial_position = self.pos
+    particlefx.play("#glow")
     -- do_animate(self)
     -- go.animate(".", "position.x", go.PLAYBACK_LOOP_PINGPONG, self.pos.x + 100, go.EASING_LINEAR, 1)
     -- self.pos = go.get_position()

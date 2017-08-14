@@ -21,10 +21,10 @@ function do_init(self)
 end
 
 
-function play_animation(self, animation)
+function play_animation(self, animation, sprite_name)
     if self.current_animation ~= animation then
         self.current_animation = animation
-        msg.post("#sprite", "play_animation", { id = animation })
+        msg.post(sprite_name or "#sprite", "play_animation", { id = animation })
     end
 end
 

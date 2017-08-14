@@ -4,10 +4,11 @@ require "main.fsm"
 
 go.property("health", 1)
 go.property('strict', true)
+go.property('randomise_initial', false)
 go.property('speed', 100)
 
 
-CHASING_PLAYER = 'CHASING_PLAYER'
+CHASING_PLAYER = 'Chase'
 
 
 function init(self)
@@ -15,13 +16,13 @@ function init(self)
         [ATTACK] = { 5 },
         [IDLE] = { 2, random = true },
         [MOVING] = { 3, random = true },
-        [CHASING_PLAYER] = { always = true, animation = MOVING },
+        [CHASING_PLAYER] = { always = true },
         [DAMAGED] = { 0.5 },
         [ATTACK_PREPARE] = { 1 },
         [DEAD] = { 0 }
     }
     self.initial_speed = self.speed
-    if not self.strict then
+    if self.randomise_initial then
         self.initial_speed = math.random(self.speed / 2, self.speed + self.speed / 2)
     end
     self.state = IDLE
@@ -40,7 +41,7 @@ function update(self, dt)
     else
         if not self.action_time then
             if self.state == CHASING_PLAYER then
-                self.velocity.x = self.initial_speed * self.direction
+                self.velocity.x = self.initial_speed * 1.5 * self.direction
                 updateDirection(self)
             end
         elseif self.t > self.action_time then

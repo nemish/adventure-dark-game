@@ -1,6 +1,9 @@
 require 'main.utils'
+require 'main.constants'
 
 function init(self)
+    self.t = 0
+    self.suriken_reload_time = 0
     local my_node = gui.get_node("cloak")
     gui.animate(my_node, "color.w", 0.05, gui.EASING_LINEAR, 1, 0.5)
 end
@@ -9,6 +12,23 @@ end
 function beauty_reload_level(self)
     local my_node = gui.get_node("cloak")
     gui.animate(my_node, "color.w", 0.5, gui.EASING_LINEAR, 2, 0, reload_level)
+end
+
+
+function update(self, dt)
+    self.t = self.t + dt
+    if self.suriken_reload_time > 0 then
+        if self.suriken_reload_time <= self.t then
+            self.suriken_reload_time = 0
+            local my_node = gui.get_node('suriken')
+            gui.animate(my_node, 'color.w', 1, gui.EASING_LINEAR, 0.2, 0, on_suriken_ready)
+        end
+    end
+end
+
+
+function on_suriken_ready()
+    msg.post(PLAYER_URL, 'suriken_ready')
 end
 
 
@@ -29,5 +49,9 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash('player_dead') then
         beauty_reload_level(self)
+    elseif message_id == hash("throw_suriken") then
+        local my_node = gui.get_node('suriken')
+        gui.animate(my_node, 'color.w', 0.35, gui.EASING_LINEAR, 0.3)
+        self.suriken_reload_time = self.t + 1.5
     end
 end

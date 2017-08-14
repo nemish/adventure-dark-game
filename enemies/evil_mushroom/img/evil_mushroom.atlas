@@ -78,6 +78,25 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "Chase"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0000_Capa-2.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0001_Capa-3.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0002_Capa-4.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0003_Capa-5.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 12
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 2
 extrude_borders: 0
 inner_padding: 0

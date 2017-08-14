@@ -1,9 +1,12 @@
 require 'main.constants'
 require 'main.locomotion'
 
+go.property('breakable', true)
+
 function init(self)
     do_init(self)
     self.pos = go.get_position()
+    msg.post('splash#sprite', 'disable')
     go.set('#action_bg', "scale.x", 0.8)
     go.set('#action_bg', "scale.y", 0.8)
     go.set('#action_bg', "tint.w", 0)
@@ -19,17 +22,32 @@ function show_action_bg(self)
 end
 
 function animate_action_bg(self, value)
-    go.animate('#action_bg', 'tint.w', go.PLAYBACK_ONCE_FORWARD, value, go.EASING_LINEAR, 0.1)
+    -- go.animate('#action_bg', 'tint.w', go.PLAYBACK_ONCE_FORWARD, value, go.EASING_LINEAR, 0.1)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == TRIGGER_RESPONSE_HASH and message.group == PLAYER_SENSE_GROUP then
+    if message_id == ANIMATION_DONE_HASH then
+        if self.current_animation == hash('Break') then
+            msg.post('splash#sprite', 'disable')
+        end
+    elseif message_id == TRIGGER_RESPONSE_HASH and message.group == PLAYER_SENSE_GROUP then
         if message.enter then
             msg.post(message.other_id, 'can_act', { action_type = hash('push'), obj = go.get_id() })
             show_action_bg(self)
         else
             msg.post(message.other_id, 'can_act', { action_type = hash('push'), obj = nil })
             hide_action_bg(self)
+        end
+    elseif message_id == hash('damage') then
+        if self.breakable then
+            msg.post('#physics', 'disable')
+            msg.post('#sprite', 'disable')
+            msg.post('splash#sprite', 'enable')
+            go.set_position(go.get_position(), 'splash')
+            play_animation(self, hash('Break'), 'splash#sprite')
+            -- msg.post(, 'enable')
+            -- play_animation(self, hash('Break'))
+            -- go.delete()
         end
     end
 end

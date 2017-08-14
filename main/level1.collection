@@ -40,66 +40,6 @@ instances {
   }
 }
 instances {
-  id: "platform1"
-  prototype: "/prefabs/platform1.go"
-  position {
-    x: -452.521
-    y: -331.405
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "platform11"
-  prototype: "/prefabs/platform1.go"
-  position {
-    x: 1047.742
-    y: 425.281
-    z: -0.05
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "box"
-  prototype: "/prefabs/box.go"
-  position {
-    x: -834.886
-    y: 162.772
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 0.2
-    y: 0.2
-    z: 1.0
-  }
-}
-instances {
   id: "bar"
   prototype: "/prefabs/bar.go"
   position {
@@ -488,62 +428,6 @@ instances {
   }
 }
 instances {
-  id: "evil_mushroom"
-  prototype: "/enemies/evil_mushroom/evil_mushroom.go"
-  position {
-    x: -1118.658
-    y: 265.444
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "evil_mushroom"
-    properties {
-      id: "strict"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "evil_mushroom1"
-  prototype: "/enemies/evil_mushroom/evil_mushroom.go"
-  position {
-    x: -1503.085
-    y: 265.444
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "evil_mushroom"
-    properties {
-      id: "strict"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "evil_mushroom11"
   prototype: "/enemies/evil_mushroom/evil_mushroom.go"
   position {
@@ -564,6 +448,86 @@ instances {
       value: "false"
       type: PROPERTY_TYPE_BOOLEAN
     }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar31"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: -1767.363
+    y: 206.591
+    z: -0.01
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.4
+    z: 1.0
+  }
+}
+instances {
+  id: "platform112"
+  prototype: "/prefabs/platform1.go"
+  position {
+    x: 1047.742
+    y: 425.281
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform1111"
+  prototype: "/prefabs/platform1.go"
+  position {
+    x: -2619.521
+    y: 564.597
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform121"
+  prototype: "/prefabs/platform1.go"
+  position {
+    x: -452.521
+    y: -331.405
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -598,6 +562,46 @@ collection_instances {
     x: -1733.267
     y: 277.385
     z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "box1"
+  collection: "/prefabs/box/box.collection"
+  position {
+    x: -891.294
+    y: 423.73
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "box11"
+  collection: "/prefabs/box/box.collection"
+  position {
+    x: -767.097
+    y: 423.73
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -685,6 +689,26 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/main/dark neanders.wav\\\"\\n"
+  "looping: 1\\n"
+  "group: \\\"master\\\"\\n"
+  "gain: 1.0\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
   ""
   position {
     x: -540.501
@@ -709,6 +733,7 @@ embedded_instances {
   children: "bar1"
   children: "bar2"
   children: "bar3"
+  children: "bar31"
   children: "bar4"
   children: "chain1"
   children: "chain2"
@@ -719,8 +744,7 @@ embedded_instances {
   children: "pipe1"
   children: "pipe2"
   children: "pipe_turn"
-  children: "platform1"
-  children: "platform11"
+  children: "platform121"
   data: ""
   position {
     x: -147.991
@@ -741,7 +765,6 @@ embedded_instances {
 }
 embedded_instances {
   id: "env"
-  children: "box"
   data: ""
   position {
     x: 0.0
@@ -1020,6 +1043,28 @@ embedded_instances {
     x: 0.0
     y: 0.0
     z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "level_fg"
+  children: "platform1111"
+  children: "platform112"
+  data: ""
+  position {
+    x: -162.388
+    y: 0.0
+    z: 0.2
   }
   rotation {
     x: 0.0
