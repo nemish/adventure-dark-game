@@ -1,0 +1,83 @@
+animations {
+  id: "Idle"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/SLEEPING/MEDIUM/MEDIUM_0000_Capa-3.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/SLEEPING/MEDIUM/MEDIUM_0001_Capa-2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Move"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0000_Capa-2.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0001_Capa-3.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0002_Capa-4.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WALKING/MEDIUM/MEDIUM_0003_Capa-5.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "WakeUp"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WAKING UP/MEDIUM/MEDIUM_0000_Capa-4.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WAKING UP/MEDIUM/MEDIUM_0001_Capa-3.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/WAKING UP/MEDIUM/MEDIUM_0002_Capa-2.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 24
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Die"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0000_Capa-2.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0001_Capa-3.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0002_Capa-4.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0003_Capa-5.png"
+  }
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0004_Capa-6.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Damaged"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0000_Capa-2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 2
+extrude_borders: 0
+inner_padding: 0

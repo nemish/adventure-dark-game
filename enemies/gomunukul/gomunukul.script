@@ -1,0 +1,146 @@
+require "main.locomotion"
+require "main.constants"
+require "main.fsm"
+
+go.property("health", 2)
+go.property('strict', true)
+go.property('speed', 250)
+
+IDLE = "Idle"
+MOVING = "Move"
+ATTACK = "Attack"
+ATTACK_PREPARE = "AttackPrepare"
+SLEEP = "Sleep"
+DAMAGED = "Damaged"
+DEAD = "Dead"
+go.property("Distance", 200)
+
+
+function init(self)
+    self.STATES_CONFIG = {
+        [ATTACK] = { 5 },
+        [IDLE] = { 2, random = true },
+        [MOVING] = { 3, random = true },
+        [DAMAGED] = { 0.5 },
+        [ATTACK_PREPARE] = { 1 },
+        [DEAD] = { 0 }
+    }
+    self.state = IDLE
+    self.action_time = calc_action_time(self)
+    self.direction = -1
+    self.t = 0
+    self.pos = go.get_position()
+    do_init(self)
+end
+
+
+function update(self, dt)
+    self.t = self.t + dt
+    if self.state == DEAD then
+        self.velocity.x = 0
+    else
+        if self.t > self.action_time then
+            self.t = 0
+            if self.state == ATTACK then
+                self.state = IDLE
+            elseif self.state == ATTACK_PREPARE then
+                self.t = 0
+                self.state = ATTACK
+                self.action_time = calc_action_time(self)
+            elseif self.state == DAMAGED then
+                self.direction = -self.damage_direction
+                self.state = ATTACK
+            elseif self.state == MOVING then
+                self.state = IDLE
+            elseif self.state == IDLE then
+                self.state = MOVING
+            end
+            self.action_time = calc_action_time(self)
+        elseif self.state == DEAD then
+            self.velocity.x = (self.speed - 100) * self.damage_direction / (self.t + 1)
+        elseif self.state == DAMAGED then
+            self.velocity.x = (self.speed - 100) * self.damage_direction / (self.t + 1)
+        elseif self.state == ATTACK then
+            self.velocity.x = self.speed * self.direction
+            updateDirection(self)
+        elseif self.state == MOVING then
+            if self.velocity.x == 0 then
+                if self.strict or math.random(0, 1) > 0.5 then
+                    self.direction = self.direction * -1
+                end
+            end
+            self.velocity.x = 100 * self.direction
+            updateDirection(self)
+        elseif self.state == ATTACK_PREPARE then
+            self.velocity.x = 20 * self.direction * -1
+            updateDirection(self)
+        elseif self.state == IDLE then
+            self.velocity.x = 0
+        end
+
+        play_animation(self, hash(self.state))
+
+        -- apply gravity if there's no ground contact and if we're not climbing a ladder
+        if not self.ground_contact then
+            self.velocity = self.velocity + gravityV3
+        end
+    end
+
+    updatePos(self, dt)
+
+    self.correction = vmath.vector3()
+    self.ground_contact = false
+    self.ladder_contact = false
+end
+
+
+function updateDirection(self)
+    sprite.set_hflip("#sprite", self.direction == 1)
+end
+
+
+function die(self, sender)
+    self.health = 0
+    self.state = DEAD
+    play_animation(self, hash("Die"))
+    msg.post(sender, "enemy_dead", { enemy_id = go.get_id() })
+end
+
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("animation_done") then
+        if self.current_animation == hash("Die") then
+            go.delete()
+        end
+    elseif message_id == hash("trigger_response") then
+        if sender.fragment == TOP_CHECKER_HASH and message.group == ELEVATOR_GROUP and self.land_contact and message.enter then
+            die(self, sender)
+        elseif (sender.fragment == hash("left_checker") or sender.fragment == hash("right_checker")) then
+            if message.enter and (message.group == CONSTRUCTION_GROUP or message.group == GROUND_GROUP) then
+                self.direction = -self.direction
+            end
+        elseif (sender.fragment == hash("left_sense") or sender.fragment == hash("right_sense")) then
+            if message.enter and message.group == PLAYER_ENEMY_CHEKER_GROUP and self.state ~= ATTACK then
+                self.t = 0
+                self.state = ATTACK_PREPARE
+                self.action_time = calc_action_time(self)
+                self.direction = sender.fragment == hash("right_sense") and 1 or -1
+            end
+        end
+    elseif message_id == hash("damage") then
+        self.t = 0
+        self.health = self.health - (message.damage or 1)
+        if self.health <= 0 then
+            die(self, sender)
+        else
+            self.state = DAMAGED
+            go.animate("#sprite", "tint", go.PLAYBACK_ONCE_PINGPONG, vmath.vector4(1, 0.3, 0.3, 1), go.EASING_LINEAR, 0.3)
+        end
+        self.action_time = calc_action_time(self)
+        self.damage_direction = message.direction
+    elseif message_id == hash("contact_point_response") then
+        if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == PLAYER_ENEMY_CHEKER_GROUP) then
+            handle_geometry_contact(self, message.normal, message.distance)
+        end
+    end
+end

@@ -4,6 +4,7 @@ GROUND_GROUP = hash("ground")
 ENEMY_GROUP = hash("enemy")
 PLAYER_GROUP = hash("player")
 PLAYER_SENSE_GROUP = hash("player_sense")
+PLAYER_ENEMY_CHEKER_GROUP = hash("player_enemy_checker")
 
 
 ANIMATION_DONE_HASH = hash("animation_done")

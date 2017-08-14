@@ -40,6 +40,7 @@ function handle_geometry_contact(self, normal, distance)
     self.ground_angle_x = normal.x
     if normal.y > 0.7 then
         self.ground_contact = true
+        self.land_contact = true
     end
     proj = vmath.dot(self.velocity, normal)
     if proj < 0 then

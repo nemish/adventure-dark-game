@@ -10,6 +10,9 @@ images {
 images {
   image: "/player/img/player_bg.png"
 }
+images {
+  image: "/player/img/Range Weapon.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

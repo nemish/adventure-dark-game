@@ -1,5 +1,6 @@
 require "main.locomotion"
 require "main.constants"
+
 DIE_ANIM_HASH = hash("Die")
 HURT_ANIM_HASH = hash("Hurt")
 SLIDE_ANIM_HASH = hash("Slide")
@@ -8,6 +9,7 @@ JUMP_START_ANIM_HASH = hash("JumpStart")
 IDLE_ANIM_HASH = hash("Idle")
 FALL_DOWN_ANIM_HASH = hash("FallDown")
 ATTACK_ANIM_HASH = hash("Attack")
+ATTACK_ANIM_HASH_2 = hash("Attack2")
 THROW_ANIM_HASH = hash("Throw")
 JUMP_LOOP_ANIM_HASH = hash("JumpLoop")
 
@@ -18,6 +20,7 @@ DOWN_ACTION_HASH = hash("down")
 ATTACK_ACTION_HASH = hash("attack")
 
 GROUND_CHECKER_HASH = hash("ground_checker")
+TOP_CHECKER_HASH = hash("top_checker")
 RIGHT_CHECKER_HASH = hash("right_checker")
 LEFT_CHECKER_HASH = hash("left_checker")
 
@@ -28,6 +31,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
     self.direction = 1
     self.hurt = false
+    self.initial_pos = go.get_position()
     self.dead = false
     self.finally_dead = false
     self.direction = 1
@@ -37,6 +41,7 @@ function init(self)
         [-1] = nil
     }
     self.pos = go.get_position()
+    self.t = 0
 
     do_init(self)
 
@@ -56,11 +61,25 @@ local function throw_suriken(self)
 end
 
 
+function restore_after_hurt(self)
+    go.cancel_animations('#sprite', 'tint.w')
+    go.set("#sprite", "tint.w", 1)
+    msg.post('#enemy_checker', 'enable')
+end
+
+
 function update(self, dt)
+    self.t = self.t + dt
+    if self.hurt_received_time and self.hurt_received_time < (self.t - 2) then
+        restore_after_hurt(self)
+    end
+
     if self.finally_dead then
         self.velocity.x = 0
     elseif self.dead then
-        self.velocity.x = self.hurt_direction * 250
+        if self.dead_by_hurt then
+            self.velocity.x = self.hurt_direction * 250
+        end
         play_animation(self, DIE_ANIM_HASH)
     elseif self.hurt then
         self.velocity.x = self.hurt_direction * 250
@@ -135,12 +154,16 @@ function update(self, dt)
 	if not self.ground_contact and not self.climbing then
 		self.velocity = self.velocity + gravityV3
         if not self.dead and not self.finally_dead then
-            if self.velocity.y < 0 then
+            if self.velocity.y < -100 then
                 play_animation(self, FALL_DOWN_ANIM_HASH)
                 self.hurt = false
             end
         end
 	end
+
+    if self.velocity.y < -1 then
+        self.land_contact = false
+    end
 
     updatePos(self, dt)
 
@@ -149,7 +172,8 @@ function update(self, dt)
 	self.ground_contact = false
 	self.ladder_contact = false
 
-    if math.abs(self.velocity.x) < 25 and vert_moving_finished(self) and not self.attacking and not self.hurt and not self.dead and not self.finally_dead then
+    if math.abs(self.velocity.x) < 125 and vert_moving_finished(self) and not self.attacking and not self.hurt and not self.dead and not self.finally_dead then
+        -- self.land_contact = true
         play_animation(self, IDLE_ANIM_HASH)
     end
 
@@ -176,28 +200,30 @@ function on_message(self, message_id, message, sender)
             self.finally_dead = true
         elseif self.current_animation == HURT_ANIM_HASH then
             self.hurt = false
-        elseif self.current_animation == ATTACK_ANIM_HASH or self.current_animation == THROW_ANIM_HASH then
+        elseif self.current_animation == ATTACK_ANIM_HASH or self.current_animation == ATTACK_ANIM_HASH_2 or self.current_animation == THROW_ANIM_HASH then
             self.attacking = false
         elseif self.jump_start then
             play_animation(self, JUMP_LOOP_ANIM_HASH)
             self.jump_start = false
         end
     elseif message_id == TRIGGER_RESPONSE_HASH then
-
-        if sender.fragment == GROUND_CHECKER_HASH and message.group == ELEVATOR_GROUP then
+        if sender.fragment == TOP_CHECKER_HASH and message.group == ELEVATOR_GROUP and self.land_contact and message.enter then
+            dead_by_smash(self)
+        elseif sender.fragment == GROUND_CHECKER_HASH and message.group == ELEVATOR_GROUP then
             self.movable_id_standing_on = message.other_id
             if message.enter then
                 msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_id_standing_on })
                 local pos = go.get_position(self.movable_id_standing_on)
                 msg.post(self.movable_id_standing_on, "activate")
                 self.pos.y = self.pos.y - pos.y
-                self.pos.z = self.pos.z + 0.3
+                self.pos.z = self.pos.z + self.pos.z - pos.z
             else
                 local pos = go.get_position(self.movable_id_standing_on)
                 self.pos.y = self.pos.y + pos.y
                 msg.post('.', 'set_parent', { keep_world_transform = 1 })
+                msg.post(self.movable_id_standing_on, "deactivate")
                 self.movable_id_standing_on = nil
-                self.pos.z = self.pos.z - 0.3
+                self.pos.z = self.pos.z - (self.initial_pos.z - pos.z)
             end
         elseif sender.fragment == GROUND_CHECKER_HASH and message.enter then
             self.land_contact = true
@@ -212,6 +238,7 @@ function on_message(self, message_id, message, sender)
             end
         end
     elseif message_id == hash("enemy_dead") then
+        print('message enemy_dead got')
         for sign, enemy_id in pairs(self.enemies) do
             if enemy_id == message.enemy_id then
                 self.enemies[sign] = nil
@@ -226,22 +253,50 @@ function on_message(self, message_id, message, sender)
         msg.post("level1:/gui#gui", "player_dead")
 	elseif message_id == CONTACT_POINT_RESPONSE_HASH then
 		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == ENEMY_GROUP) then
+            local hurt = false
+            if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP) and self.velocity.y < -2000 then
+                hurt = true
+            end
+
             handle_geometry_contact(self, message.normal, message.distance)
-            if message.group == ENEMY_GROUP and not self.hurt then
+
+            if hurt then
+                self.hurt_direction = self.direction
+                receive_hurt(self)
+            elseif message.group == ENEMY_GROUP and not self.hurt then
                 self.hurt_direction = (go.get_position(message.other_id).x - self.pos.x) > 0 and -1 or 1
-                self.hurt = true
-                self.velocity.y = 150
-                self.health = self.health - 1
-                msg.post("level1:/gui#gui", "set_health", { health = self.health })
-                if self.health <= 0 then
-                    msg.post("level1:/gui#gui", "player_dead")
-                    self.dead = true
-                end
+                receive_hurt(self)
             end
 		elseif message.group == hash("ladder") then
 			self.ladder_contact = true
 		end
 	end
+end
+
+
+function receive_hurt(self, damage)
+    self.hurt = true
+    self.velocity.y = 150
+    self.health = self.health - (damage and damage or 1)
+    msg.post("level1:/gui#gui", "set_health", { health = self.health })
+    if self.health <= 0 then
+        msg.post("level1:/gui#gui", "player_dead")
+        self.dead = true
+        self.dead_by_hurt = true
+    else
+        self.hurt_received_time = self.t
+        go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_PINGPONG, 0.5, go.EASING_LINEAR, 0.3)
+    end
+    msg.post('#enemy_checker', 'disable')
+end
+
+
+function dead_by_smash(self, damage)
+    self.health = 0
+    msg.post("level1:/gui#gui", "set_health", { health = self.health })
+    msg.post("level1:/gui#gui", "player_dead")
+    self.dead = true
+    msg.post('#enemy_checker', 'disable')
 end
 
 
@@ -301,7 +356,11 @@ function on_input(self, action_id, action)
             throw_suriken(self)
         elseif action_id == ATTACK_ACTION_HASH and action.pressed and self.land_contact then
             self.attacking = true
-            play_animation(self, ATTACK_ANIM_HASH)
+            local anim = ATTACK_ANIM_HASH
+            if math.random(0, 1) > 0.4 then
+                anim = ATTACK_ANIM_HASH_2
+            end
+            play_animation(self, anim)
             local enemyId = self.enemies[self.direction]
             if enemyId then
                 msg.post(enemyId, "damage", { direction = self.direction })

@@ -83,7 +83,7 @@ animations {
     image: "/player/img/PNG Sequences/Attacking/Attacking_011.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
-  fps: 30
+  fps: 45
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -126,7 +126,7 @@ animations {
     image: "/player/img/PNG Sequences/Running/Running_011.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 20
+  fps: 24
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -451,6 +451,49 @@ animations {
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Attack2"
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Kicking/Kicking_011.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 45
   flip_horizontal: 0
   flip_vertical: 0
 }

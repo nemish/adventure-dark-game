@@ -1,0 +1,174 @@
+animations {
+  id: "Idle"
+  images {
+    image: "/enemies/gomunukul/img/IDLE/SMALL/SMALL_0001_Capa-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Move"
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0002_Capa-3.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0003_Capa-4.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0004_Capa-5.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0005_Capa-6.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WALKING/SMALL/SMALL_0006_Capa-7.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Attack"
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0002_Capa-3.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0003_Capa-4.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0004_Capa-5.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0005_Capa-6.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/ATTACK/SMALL/SMALL_0006_Capa-7.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Die"
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 1/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 1/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 1/SMALL/SMALL_0002_Capa-3.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 1/SMALL/SMALL_0003_Capa-4.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 16
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Sleep"
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0002_Capa-3.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0003_Capa-4.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0004_Capa-5.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0005_Capa-6.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/SLEEPING/SMALL/SMALL_0006_Capa-7.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Wakeup"
+  images {
+    image: "/enemies/gomunukul/img/WAKEUP/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WAKEUP/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/WAKEUP/SMALL/SMALL_0002_Capa-3.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Damaged"
+  images {
+    image: "/enemies/gomunukul/img/WAKEUP/SMALL/SMALL_0000_Capa-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Die2"
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 2/SMALL/SMALL_0000_Capa-1.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 2/SMALL/SMALL_0001_Capa-2.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 2/SMALL/SMALL_0002_Capa-3.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 2/SMALL/SMALL_0003_Capa-4.png"
+  }
+  images {
+    image: "/enemies/gomunukul/img/DYING STYLE 2/SMALL/SMALL_0004_Capa-5.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "AttackPrepare"
+  images {
+    image: "/enemies/gomunukul/img/WAKEUP/SMALL/SMALL_0000_Capa-1.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 2
+extrude_borders: 0
+inner_padding: 0
