@@ -37,8 +37,8 @@ embedded_components {
   id: "physics"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
-  "mass: 10.0\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "mass: 0.0\n"
   "friction: 160.0\n"
   "restitution: 0.0\n"
   "group: \"construction\"\n"
@@ -140,6 +140,26 @@ embedded_components {
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "box_break"
+  type: "sound"
+  data: "sound: \"/sound/box_break.wav\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
   ""
   position {
     x: 0.0

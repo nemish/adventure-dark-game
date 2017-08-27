@@ -497,6 +497,260 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "Climb"
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_011.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_012.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_013.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_014.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_015.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_016.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_017.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Hanging"
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_011.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_012.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_013.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_014.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_015.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_016.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Hanging/Hanging_017.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Pull"
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_011.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_012.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_013.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_014.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_015.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_016.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Pull/Pull_017.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Push"
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_000.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_001.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_002.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_003.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_004.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_005.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_006.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_007.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_008.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_009.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_010.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_011.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_012.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_013.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_014.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_015.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_016.png"
+  }
+  images {
+    image: "/player/img/PNG Sequences/Push/Push_017.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "ClimbIdle"
+  images {
+    image: "/player/img/PNG Sequences/Climb/Climb_000.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

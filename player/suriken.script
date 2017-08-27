@@ -6,7 +6,7 @@ go.property('speed', 50)
 go.property('direction', 1)
 
 function init(self)
-    self.velocity = vmath.vector3(800 * self.direction, 150, 0)
+    self.velocity = vmath.vector3(800 * self.direction, 100, 0)
     go.set_scale(0.3)
     self.t = 0
     self.pos = go.get_position()

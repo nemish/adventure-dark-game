@@ -1,8 +1,22 @@
-gravity = -20
+require 'main.constants'
+
+gravity = -30
 gravityV3 = vmath.vector3(0, gravity, 0)
+
+
+function notify_player_obj_id(msg_name, obj_id)
+    notify_player(msg_name, { obj_id = obj_id })
+end
+
+
+function notify_player(msg_name, data)
+    msg.post(PLAYER_URL, msg_name, data)
+end
+
 
 function do_init(self)
     self.velocity = vmath.vector3(0, 0, 0)
+    self.initial_z = go.get_position().z
     self.ground_contact = false
     self.ladder_contact = false
     self.land_contact = false
@@ -52,6 +66,22 @@ end
 
 
 function updatePos(self, dt)
-    self.pos = self.pos + self.velocity * dt
-    go.set_position(self.pos)
+    self.pos.y = self.pos.y + self.velocity.y * dt
+    y_offset = self.y_offset or 0
+    if self.forced_pos_x then
+        self.pos.x = self.pos.x + (self.forced_pos_x - self.pos.x) * dt * 10
+    else
+        self.pos.x = self.pos.x + self.velocity.x * dt
+    end
+    go.set_position(vmath.vector3(self.pos.x, self.pos.y + y_offset, self.initial_z))
+end
+
+
+function get_direction_from_touch(sender)
+    return sender.fragment == hash("right_sense") and 1 or -1
+end
+
+
+function updateSpriteDirection(self)
+    sprite.set_hflip("#sprite", self.direction == 1)
 end

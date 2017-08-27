@@ -74,7 +74,7 @@ animations {
     image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0000_Capa-2.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 30
+  fps: 1
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -94,6 +94,65 @@ animations {
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 12
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "AttackPrepare"
+  images {
+    image: "/enemies/evil_mushroom/img/RED/DYING/MEDIUM/MEDIUM_0000_Capa-2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "Attack"
+  images {
+    image: "/img/effects/rocket/Rockets_01.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_02.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_03.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_04.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_05.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_06.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_07.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_08.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_09.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_10.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_11.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_12.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_13.png"
+  }
+  images {
+    image: "/img/effects/rocket/Rockets_14.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 24
   flip_horizontal: 0
   flip_vertical: 0
 }

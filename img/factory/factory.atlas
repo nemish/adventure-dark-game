@@ -26,9 +26,6 @@ images {
   image: "/img/factory/chiminie.png"
 }
 images {
-  image: "/img/factory/claw.png"
-}
-images {
   image: "/img/factory/gear 1.png"
 }
 images {
@@ -87,6 +84,33 @@ images {
 }
 images {
   image: "/img/factory/box_action_bg.png"
+}
+images {
+  image: "/img/factory/platform_part1.png"
+}
+images {
+  image: "/img/factory/platform_part_2.png"
+}
+images {
+  image: "/img/factory/platform_part_bg.png"
+}
+images {
+  image: "/img/factory/platform_part_pipe.png"
+}
+images {
+  image: "/img/factory/platform_part_pipe_2.png"
+}
+images {
+  image: "/img/factory/platform_part_wall.png"
+}
+images {
+  image: "/img/factory/platform_part_top.png"
+}
+images {
+  image: "/img/factory/claw_side.png"
+}
+images {
+  image: "/img/factory/claw_center.png"
 }
 animations {
   id: "Break"

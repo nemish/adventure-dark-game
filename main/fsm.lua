@@ -1,4 +1,4 @@
-
+require 'main.constants'
 
 function calc_action_time(self)
     state_config = self.STATES_CONFIG[self.state]
@@ -9,3 +9,17 @@ function calc_action_time(self)
     end
     return state_config[1]
 end
+
+
+function set_state(self, state)
+    self.t = 0
+    self.state = state
+end
+
+
+function on_enemy_obstacle_reached(self)
+    set_state(self, IDLE)
+    self.direction = -self.direction
+    updateSpriteDirection(self)
+end
+

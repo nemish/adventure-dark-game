@@ -1,5 +1,5 @@
 require "main.locomotion"
-require "main.constants"
+-- require "main.constants"
 
 DIE_ANIM_HASH = hash("Die")
 HURT_ANIM_HASH = hash("Hurt")
@@ -11,6 +11,9 @@ FALL_DOWN_ANIM_HASH = hash("FallDown")
 ATTACK_ANIM_HASH = hash("Attack")
 ATTACK_ANIM_HASH_2 = hash("Attack2")
 THROW_ANIM_HASH = hash("Throw")
+PUSH_ANIM_HASH = hash("Push")
+CLIMB_ANIM_HASH = hash("Climb")
+CLIMB_IDLE_ANIM_HASH = hash("ClimbIdle")
 JUMP_LOOP_ANIM_HASH = hash("JumpLoop")
 
 LEFT_ACTION_HASH = hash("left")
@@ -20,9 +23,16 @@ DOWN_ACTION_HASH = hash("down")
 ATTACK_ACTION_HASH = hash("attack")
 
 GROUND_CHECKER_HASH = hash("ground_checker")
+LEFT_HANGING_HAND_HASH = hash("left_hanging_hand")
+RIGHT_HANGING_HAND_HASH = hash("right_hanging_hand")
 TOP_CHECKER_HASH = hash("top_checker")
 RIGHT_CHECKER_HASH = hash("right_checker")
 LEFT_CHECKER_HASH = hash("left_checker")
+
+SOUND_ATTACK_FOOT = 'attack_foot'
+SOUND_ATTACK_BLADE = 'attack_blade'
+
+HANGING_STATE = hash("Hanging")
 
 
 go.property("health", 3)
@@ -30,16 +40,28 @@ go.property("health", 3)
 function init(self)
 	msg.post(".", "acquire_input_focus")
     self.direction = 1
+    self.anim_state = IDLE_ANIM_HASH
     self.hurt = false
     self.initial_pos = go.get_position()
     self.dead = false
     self.finally_dead = false
     self.suriken = true
+    self.landing_sound = 'landing_sound'
     self.direction = 1
     self.hurt_direction = 1
     self.enemies = {
         [1] = nil,
         [-1] = nil
+    }
+    self.steps_map = {
+        [1] = '#step1',
+        [-1] = '#step2'
+    }
+    self.current_step = 1
+
+    self.offset_map = {
+        [RIGHT_HANGING_HAND_HASH] = vmath.vector3(21.5, 8, 0.0),
+        [LEFT_HANGING_HAND_HASH] = vmath.vector3(-21.5, 8, 0.0)
     }
 
     self.objects_in_touch = {
@@ -88,10 +110,15 @@ function update(self, dt)
         if self.dead_by_hurt then
             self.velocity.x = self.hurt_direction * 250
         end
-        play_animation(self, DIE_ANIM_HASH)
+        self.anim_state = DIE_ANIM_HASH
+    elseif self.state == HANGING_STATE then
+        -- print(self.state, 'Housadf', go.get_position())
+        play_animation(self, HANGING_STATE)
+        self.velocity.x = 0
+        self.velocity.y = 0
     elseif self.hurt then
         self.velocity.x = self.hurt_direction * 250
-        play_animation(self, HURT_ANIM_HASH)
+        self.anim_state = HURT_ANIM_HASH
     elseif self.attacking then
         self.velocity.x = 0
     else
@@ -99,7 +126,7 @@ function update(self, dt)
             if math.abs(self.velocity.x) < 20 then
                 self.slide_start = nil
             else
-                play_animation(self, SLIDE_ANIM_HASH)
+                self.anim_state = SLIDE_ANIM_HASH
                 multiplier = get_slide_direction(self)
                 if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
                     self.slide_start = nil
@@ -116,18 +143,25 @@ function update(self, dt)
                 self.velocity.x = -200
                 sprite.set_hflip("#sprite", true)
                 if self.land_contact then
-                    play_animation(self, RUN_ANIM_HASH)
+                    play_steps_sound(self)
+                    self.anim_state = RUN_ANIM_HASH
                 end
+
             elseif self.actions[RIGHT_ACTION_HASH] then
                 self.direction = 1
                 self.velocity.x = 200
                 sprite.set_hflip("#sprite", false)
                 if self.land_contact then
-                    play_animation(self, RUN_ANIM_HASH)
+                    play_steps_sound(self)
+                    self.anim_state = RUN_ANIM_HASH
                 end
             -- and clear it if we're not moving left/right
             else
                 self.velocity.x = 0
+            end
+
+            if self.velocity.x ~= 0 and self.land_contact and self.objects_in_touch[self.direction] then
+                self.anim_state = PUSH_ANIM_HASH
             end
         end
     end
@@ -139,37 +173,57 @@ function update(self, dt)
 		-- also set flag to indicate that we are climbing
 		if self.actions[UP_ACTION_HASH] then
 			self.velocity.y = 150
-			self.ground_contact = true
+            self.land_contact = false
+			-- self.ground_contact = true
 			self.climbing = true
-            play_animation(self, RUN_ANIM_HASH)
+            self.jump_start = false
+            self.second_jump = false
+            self.anim_state = CLIMB_ANIM_HASH
 		elseif self.actions[DOWN_ACTION_HASH] then
 			self.velocity.y = -150
-			self.ground_contact = true
+			-- self.ground_contact = true
+            self.jump_start = false
+            self.second_jump = false
 			self.climbing = true
-            play_animation(self, JUMP_START_ANIM_HASH)
+            self.anim_state = CLIMB_ANIM_HASH
 		elseif self.climbing then
+            self.anim_state = CLIMB_IDLE_ANIM_HASH
 			self.velocity.y = 0
 		end
+
+        -- if not self.land_contact or not self.ground_contact then
+        --     self.velocity.x = 0
+        -- end
 	else
+        self.forced_pos_x = nil
 		self.climbing = false
 	end
 
-    if not self.actions[LEFT_ACTION_HASH] and not self.actions[RIGHT_ACTION_HASH] and self.land_contact and not self.slide_start and not self.hurt and not self.attacking and not self.dead and not self.finally_dead then
-        play_animation(self, IDLE_ANIM_HASH)
+    if not self.climbing then
+        self.forced_pos_x = nil
+    end
+
+    if self.land_contact or self.ground_contact then
+        self.forced_pos_x = nil
+        self.climbing = false
+    end
+
+    if not self.actions[LEFT_ACTION_HASH] and not self.actions[RIGHT_ACTION_HASH] and self.land_contact and not self.slide_start and not self.hurt and not self.attacking and not self.dead and not self.finally_dead and not self.climbing and self.state ~= HANGING_STATE then
+        self.anim_state = IDLE_ANIM_HASH
     end
 
 	-- apply gravity if there's no ground contact and if we're not climbing a ladder
-	if not self.ground_contact and not self.climbing then
+	if not self.ground_contact and not self.climbing and self.state ~= HANGING_STATE then
 		self.velocity = self.velocity + gravityV3
         if not self.dead and not self.finally_dead then
             if self.velocity.y < -100 then
-                play_animation(self, FALL_DOWN_ANIM_HASH)
+                self.anim_state = FALL_DOWN_ANIM_HASH
                 self.hurt = false
             end
         end
 	end
 
-    if self.velocity.y < -1 then
+    if self.velocity.y < -1 and not self.climbing then
         self.land_contact = false
     end
 
@@ -178,12 +232,14 @@ function update(self, dt)
 	-- reset volatile state
 	self.correction = vmath.vector3()
 	self.ground_contact = false
-	self.ladder_contact = false
+    self.ladder_contact = false
 
-    if math.abs(self.velocity.x) < 125 and vert_moving_finished(self) and not self.attacking and not self.hurt and not self.dead and not self.finally_dead then
+    if math.abs(self.velocity.x) < 125 and vert_moving_finished(self) and not self.attacking and not self.hurt and not self.dead and not self.finally_dead and not self.climbing and self.state ~= HANGING_STATE then
         -- self.land_contact = true
-        play_animation(self, IDLE_ANIM_HASH)
+        self.anim_state = IDLE_ANIM_HASH
     end
+
+    play_animation(self, self.state or self.anim_state)
 
     if not self.dead_by_fall then
         local worldPos = go.get_world_position()
@@ -196,8 +252,25 @@ function update(self, dt)
 end
 
 
+function play_steps_sound(self)
+    -- if not self.step_sound_in_progress then
+    --     -- msg.post(self.steps_map[self.current_step], 'play_sound')
+    --     self.step_sound_in_progress
+    -- end
+end
+
+
 function vert_moving_finished(self)
     return math.abs(self.velocity.y) < 25
+end
+
+
+function clear_object_in_touch(self, objects, obj_id)
+    for sign, item_id in pairs(objects) do
+        if item_id == obj_id then
+            objects[sign] = nil
+        end
+    end
 end
 
 
@@ -211,34 +284,36 @@ function on_message(self, message_id, message, sender)
         elseif self.current_animation == ATTACK_ANIM_HASH or self.current_animation == ATTACK_ANIM_HASH_2 or self.current_animation == THROW_ANIM_HASH then
             self.attacking = false
         elseif self.jump_start then
-            play_animation(self, JUMP_LOOP_ANIM_HASH)
+            self.anim_state = JUMP_LOOP_ANIM_HASH
             self.jump_start = false
         end
+    elseif message_id == hash("dead_by_saw") then
+        dead_by_saw(self)
     elseif message_id == hash("suriken_ready") then
         self.suriken = true
     elseif message_id == TRIGGER_RESPONSE_HASH then
         if sender.fragment == TOP_CHECKER_HASH and message.group == ELEVATOR_GROUP and self.land_contact and message.enter then
             dead_by_smash(self)
-        elseif sender.fragment == GROUND_CHECKER_HASH and message.group == ELEVATOR_GROUP then
-            self.movable_id_standing_on = message.other_id
-            if message.enter then
-                msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_id_standing_on })
-                local pos = go.get_position(self.movable_id_standing_on)
-                msg.post(self.movable_id_standing_on, "activate")
-                self.pos.y = self.pos.y - pos.y
-                self.pos.z = self.pos.z + self.pos.z - pos.z
-            else
-                local pos = go.get_position(self.movable_id_standing_on)
-                self.pos.y = self.pos.y + pos.y
-                msg.post('.', 'set_parent', { keep_world_transform = 1 })
-                msg.post(self.movable_id_standing_on, "deactivate")
-                self.movable_id_standing_on = nil
-                self.pos.z = self.pos.z - (self.initial_pos.z - pos.z)
+        -- elseif message.group == PLATFORM_END_GROUP then
+        --     print(message.group, message.enter)
+        -- elseif message.group == LADDER_GROUP then
+        --     print(message.group, message.enter)
+        --     -- self.ladder_contact = message.enter
+        elseif sender.fragment == GROUND_CHECKER_HASH then
+            if message.group == ELEVATOR_GROUP then
+                handle_movable_contact(self, sender, message)
             end
-        elseif sender.fragment == GROUND_CHECKER_HASH and message.enter then
-            self.land_contact = true
-            self.jump_start = false
-            self.second_jump = false
+
+            if message.enter then
+                if not self.land_contact and self.landing_sound then
+                    msg.post('#' .. self.landing_sound, 'play_sound')
+                end
+                self.land_contact = true
+                self.jump_start = false
+                self.second_jump = false
+            end
+        elseif sender.fragment == LEFT_HANGING_HAND_HASH or sender.fragment == RIGHT_HANGING_HAND_HASH then
+            handle_movable_contact(self, sender, message, on_start_hanging, on_stop_hanging)
         elseif sender.fragment == RIGHT_CHECKER_HASH or sender.fragment == LEFT_CHECKER_HASH then
             local sign = sender.fragment == RIGHT_CHECKER_HASH and 1 or -1
             local object_id = message.enter and message.other_id or nil
@@ -252,20 +327,18 @@ function on_message(self, message_id, message, sender)
                 msg.post(object_id, "damage", { direction = self.direction })
             end
         end
+    elseif message_id == hash('blow') then
+        if vmath.length(self.pos - message.pos) < 140 then
+            self.hurt_direction = get_direction_from_damage_obj(self, message.pos)
+            receive_hurt(self, 2)
+        end
     elseif message_id == hash("enemy_dead") then
-        for sign, enemy_id in pairs(self.enemies) do
-            if enemy_id == message.enemy_id then
-                self.enemies[sign] = nil
-            end
-        end
-        for sign, enemy_id in pairs(self.objects_in_touch) do
-            if enemy_id == message.enemy_id then
-                self.enemies[sign] = nil
-            end
-        end
+        clear_object_in_touch(self, self.enemies, message.obj_id)
+    elseif message_id == hash("object_broken") then
+        clear_object_in_touch(self, self.objects_in_touch, message.obj_id)
     elseif message_id == hash("elevator_stop") then
-        if self.movable_id_standing_on then
-            msg.post(self.movable_id_standing_on, "activate")
+        if self.movable_parent_id then
+            msg.post(self.movable_parent_id, "activate")
         end
     elseif message_id == hash('bottom_clear') then
         self.dead_by_fall = true
@@ -273,7 +346,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == CONTACT_POINT_RESPONSE_HASH then
 		if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == ENEMY_GROUP) then
             local hurt = false
-            if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP) and self.velocity.y < -2000 then
+            if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP) and self.velocity.y < -1500 then
                 hurt = true
             end
 
@@ -283,14 +356,61 @@ function on_message(self, message_id, message, sender)
                 self.hurt_direction = self.direction
                 receive_hurt(self)
             elseif message.group == ENEMY_GROUP and not self.hurt then
-                self.hurt_direction = (go.get_position(message.other_id).x - self.pos.x) > 0 and -1 or 1
+                self.hurt_direction = get_direction_from_damage_obj(self, go.get_position(message.other_id))
                 receive_hurt(self)
             end
-		elseif message.group == hash("ladder") then
-			self.ladder_contact = true
+        elseif message.group == LADDER_GROUP then
+            self.ladder_contact = true
+            self.forced_pos_x = go.get_world_position(message.other_id).x
 		end
 	end
 end
+
+
+function handle_movable_contact(self, sender, message, on_enter, on_exit)
+    self.movable_parent_id = message.other_id
+    if message.enter then
+        msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_parent_id })
+        local offset = self.offset_map[sender.fragment] or vmath.vector3()
+        local pos = go.get_position(self.movable_parent_id)
+        msg.post(self.movable_parent_id, "activate")
+        self.pos.y = self.pos.y - pos.y
+        self.pos.z = self.pos.z - pos.z
+        self.pos = self.pos - offset
+        if on_enter then
+            on_enter(self, sender)
+        end
+    else
+        local offset = self.offset_map[sender.fragment] or vmath.vector3()
+        local pos = go.get_position(self.movable_parent_id)
+        self.pos.y = self.pos.y + pos.y
+        msg.post('.', 'set_parent', { keep_world_transform = 1 })
+        msg.post(self.movable_parent_id, "deactivate")
+        self.movable_parent_id = nil
+        self.pos.z = self.initial_pos.z
+        self.pos = self.pos + offset
+        if on_exit then
+            on_exit(self, sender)
+        end
+    end
+end
+
+
+function on_start_hanging(self, sender)
+    self.state = HANGING_STATE
+end
+
+
+function on_stop_hanging(self, sender)
+    print('In on_stop_hanging', self, sender.fragment)
+    self.state = nil
+end
+
+
+function get_direction_from_damage_obj(self, other_pos)
+    return (other_pos.x - self.pos.x) > 0 and -1 or 1
+end
+
 
 
 function receive_hurt(self, damage)
@@ -310,12 +430,23 @@ function receive_hurt(self, damage)
 end
 
 
-function dead_by_smash(self, damage)
+function provide_death(self)
     self.health = 0
     msg.post(GUI_LEVEL_HASH, "set_health", { health = self.health })
     msg.post(GUI_LEVEL_HASH, "player_dead")
     self.dead = true
     msg.post('#enemy_checker', 'disable')
+end
+
+
+function dead_by_smash(self, damage)
+    provide_death(self)
+end
+
+
+function dead_by_saw(self, damage)
+    provide_death(self)
+    go.delete()
 end
 
 
@@ -341,7 +472,6 @@ function on_input(self, action_id, action)
                 -- set/clear action in map of all actions
                 if action.pressed then
                     self.actions[action_id] = true
-                    self.move_begin = true
                 elseif action.released then
                     self.actions[action_id] = nil
                 end
@@ -351,49 +481,52 @@ function on_input(self, action_id, action)
 
 		if action.pressed then
 			self.actions[action_id] = true
-            self.move_begin = true
 		elseif action.released then
 			self.actions[action_id] = nil
 		end
 
         if action_id == hash("action") and action.pressed then
-            if self.movable_id_standing_on then
-                msg.post(self.movable_id_standing_on, "elevator_trigger", { height = 100 })
+            if self.movable_parent_id then
+                msg.post(self.movable_parent_id, "elevator_trigger", { height = 100 })
             end
         elseif action_id == DOWN_ACTION_HASH and action.pressed then
             if self.land_contact and self.ground_contact and not self.slide_start and not self.ladder_contact then
                 self.slide_start_direction_int = get_slide_direction(self)
 
                 if self.slide_start_direction_int then
-                    play_animation(self, SLIDE_ANIM_HASH)
+                    self.anim_state = SLIDE_ANIM_HASH
                     self.slide_start = os.clock()
                 end
             end
         elseif action_id == hash("distance_attack") and action.pressed and self.land_contact then
             if self.suriken then
                 self.attacking = true
-                play_animation(self, THROW_ANIM_HASH)
+                self.anim_state = THROW_ANIM_HASH
                 throw_suriken(self)
             end
-        elseif action_id == ATTACK_ACTION_HASH and action.pressed and self.land_contact then
+        elseif action_id == ATTACK_ACTION_HASH and action.pressed and self.land_contact and not self.attacking then
             self.attacking = true
             local anim = ATTACK_ANIM_HASH
+            local sound = SOUND_ATTACK_BLADE
             if math.random(0, 1) > 0.4 then
                 anim = ATTACK_ANIM_HASH_2
+                sound = SOUND_ATTACK_FOOT
             end
-            play_animation(self, anim)
+            msg.post("#" .. sound, "play_sound")
+            self.anim_state = anim
             broadcast_damage(self, self.enemies)
             broadcast_damage(self, self.objects_in_touch)
         -- jump
         elseif action_id == hash("jump") and action.pressed then
             if not self.land_contact and not self.second_jump then
                 self.velocity.y = 800
-                play_animation(self, hash("DoubleJump"))
+                self.anim_state = hash("DoubleJump")
                 self.second_jump = true
-            elseif self.land_contact then
+            elseif self.land_contact or self.climbing then
                 self.velocity.y = 500
-                play_animation(self, JUMP_START_ANIM_HASH)
+                self.anim_state = JUMP_START_ANIM_HASH
             end
+            self.climbing = false
             self.land_contact = false
             self.jump_start = true
             self.slide_start = false

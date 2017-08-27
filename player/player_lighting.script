@@ -2,7 +2,7 @@ require 'main.watcher'
 
 go.property('beauty_effect', true)
 go.property("initial_value", 0.95)
-go.property("delta", 0.15)
+go.property("delta", 0.9)
 
 
 function do_animate(self, pos)
@@ -36,13 +36,11 @@ function init(self)
     self.t = 0
     self.duration = 1
     self.pos = go.get_position()
+    self.opacity = 98
     self.initial_position = self.pos
     particlefx.play("#glow")
-    -- do_animate(self)
-    -- go.animate(".", "position.x", go.PLAYBACK_LOOP_PINGPONG, self.pos.x + 100, go.EASING_LINEAR, 1)
-    -- self.pos = go.get_position()
-	-- Add initialization code here
-	-- Remove this function if not needed
+    self.anim_cycle = 0
+    self.opacity_direction = 1
 end
 
 
@@ -51,23 +49,47 @@ function end_animation(self)
 end
 
 
+function after_blow(self)
+    self.animating_2 = false
+    self.last_opacity = self.opacity
+    self.opacity = 98
+    self.duration = 0.4
+    self.do_animate_blow = false
+    do_animate_tint(self, end_animation)
+    self.t = 0
+end
+
+
+function blow(self, opacity)
+    self.opacity = opacity or 15
+    self.duration = 0.05
+    self.animating_2 = true
+    do_animate_tint(self, after_blow)
+    self.t = 0
+end
+
+
+function do_animate_tint(self, callback_fn)
+    local value = math.random(self.opacity - 3, self.opacity) / 100
+    go.animate(
+        "#sprite",
+        "tint.w",
+        go.PLAYBACK_ONCE_FORWARD,
+        value,
+        go.EASING_LINEAR,
+        self.duration,
+        0,
+        -- pauseTime,
+        callback_fn
+    )
+end
+
+
 function do_beauty(self, dt)
     self.t = self.t + dt
-    if self.t > self.duration then
-        local value = math.random(93, 98) / 100
+    if self.t > self.duration and not self.animating_2 then
         self.duration = math.random(1, 50) / 100
-        go.animate(
-            "#sprite",
-            "tint.w",
-            go.PLAYBACK_ONCE_FORWARD,
-            value,
-            go.EASING_LINEAR,
-            self.duration,
-            0,
-            -- pauseTime,
-            end_animation
-        )
-
+        do_animate_tint(self, end_animation)
         self.t = 0
         -- go.set('#sprite', "tint.w", value)
     end
@@ -91,6 +113,8 @@ function on_message(self, message_id, message, sender)
         if message.initial then
             self.offset = self.initial_position - self.look_at
         end
+    elseif message_id == hash('blow') then
+        blow(self, 40 + math.abs(self.pos.x - message.pos.x) / 10)
     end
 	-- Add message-handling code here
 	-- Remove this function if not needed

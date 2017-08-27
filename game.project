@@ -47,3 +47,6 @@ bundle_identifier = com.britzl.publicexamples.platformer_with_ladders
 [ios]
 bundle_identifier = com.britzl.publicexamples.platformer_with_ladders
 
+[sound]
+gain = 0.1
+

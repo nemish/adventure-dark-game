@@ -163,15 +163,15 @@ instances {
   id: "bar2"
   prototype: "/prefabs/bar2.go"
   position {
-    x: -564.019
-    y: 1124.207
+    x: -139.837
+    y: 1064.353
     z: 0.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
-    w: 1.0
+    z: 0.38268343
+    w: 0.9238795
   }
   scale3 {
     x: 2.0
@@ -352,7 +352,7 @@ instances {
   prototype: "/main/bottom_cleaner.go"
   position {
     x: -877.083
-    y: -166.646
+    y: -632.735
     z: 0.0
   }
   rotation {
@@ -433,7 +433,7 @@ instances {
   position {
     x: -1344.094
     y: 265.444
-    z: 0.0
+    z: 0.2
   }
   rotation {
     x: 0.0
@@ -476,11 +476,12 @@ instances {
   }
 }
 instances {
-  id: "platform112"
-  prototype: "/prefabs/platform1.go"
+  id: "platform_top"
+  prototype: "/prefabs/platform_top.go"
+  children: "pipe3"
   position {
-    x: 1047.742
-    y: 425.281
+    x: -440.802
+    y: 80.577
     z: 0.0
   }
   rotation {
@@ -496,11 +497,11 @@ instances {
   }
 }
 instances {
-  id: "platform1111"
-  prototype: "/prefabs/platform1.go"
+  id: "pipe3"
+  prototype: "/prefabs/pipe.go"
   position {
-    x: -2619.521
-    y: 564.597
+    x: -175.373
+    y: -236.99
     z: 0.0
   }
   rotation {
@@ -516,11 +517,439 @@ instances {
   }
 }
 instances {
-  id: "platform121"
-  prototype: "/prefabs/platform1.go"
+  id: "platform_bg_black"
+  prototype: "/prefabs/platform_bg_black.go"
   position {
-    x: -452.521
-    y: -331.405
+    x: -2326.307
+    y: 428.324
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_bg_black1"
+  prototype: "/prefabs/platform_bg_black.go"
+  position {
+    x: 50.135
+    y: -272.919
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: -379.53
+    y: 437.322
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "bar21"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 952.781
+    y: 431.175
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar211"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 1214.554
+    y: 232.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.13052619
+    w: 0.9914449
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar2111"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 884.467
+    y: 146.981
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.25881904
+    w: 0.9659258
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top2"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 712.648
+    y: -325.647
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_bg_black2"
+  prototype: "/prefabs/platform_bg_black.go"
+  position {
+    x: 957.148
+    y: -682.488
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: -575.535
+    y: 274.977
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder1"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: -575.535
+    y: 569.14
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder2"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: 1208.992
+    y: -152.373
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder11"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: 1034.969
+    y: 185.674
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "bar5"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 540.997
+    y: -108.199
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar51"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1398.451
+    y: -108.199
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top1"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 1050.871
+    y: 975.11
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 559.762
+    y: 291.56
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block1"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1512.373
+    y: 184.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_wall_vertical"
+  prototype: "/prefabs/platform_wall_vertical.go"
+  position {
+    x: -1849.175
+    y: 433.564
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_wall_vertical1"
+  prototype: "/prefabs/platform_wall_vertical.go"
+  position {
+    x: -1849.175
+    y: 1066.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "saw"
+  prototype: "/prefabs/saw.go"
+  position {
+    x: -350.87
+    y: 91.257
+    z: -0.01
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "saw"
+    properties {
+      id: "move_distance"
+      value: "200.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block11"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1563.218
+    y: 647.636
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "Smoke_cute"
+  prototype: "/prefabs/Smoke_cute.go"
+  position {
+    x: -301.038
+    y: 694.704
     z: 0.0
   }
   rotation {
@@ -549,6 +978,17 @@ collection_instances {
     z: 0.0
     w: 1.0
   }
+  instance_properties {
+    id: "elevator"
+    properties {
+      id: "api"
+      properties {
+        id: "height"
+        value: "700.0"
+        type: PROPERTY_TYPE_NUMBER
+      }
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -559,9 +999,9 @@ collection_instances {
   id: "player"
   collection: "/player/player.collection"
   position {
-    x: -1733.267
-    y: 277.385
-    z: 0.1
+    x: -19.44
+    y: 1003.979
+    z: 0.15
   }
   rotation {
     x: 0.0
@@ -576,11 +1016,11 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "box1"
+  id: "box"
   collection: "/prefabs/box/box.collection"
   position {
-    x: -891.294
-    y: 423.73
+    x: -1546.334
+    y: 286.027
     z: 0.0
   }
   rotation {
@@ -596,11 +1036,11 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "box11"
-  collection: "/prefabs/box/box.collection"
+  id: "claw"
+  collection: "/prefabs/claw.collection"
   position {
-    x: -767.097
-    y: 423.73
+    x: -1028.777
+    y: 722.243
     z: 0.0
   }
   rotation {
@@ -610,17 +1050,19 @@ collection_instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
+    x: 0.5
+    y: 0.5
     z: 1.0
   }
 }
 scale_along_z: 0
 embedded_instances {
   id: "bg"
+  children: "Smoke_cute"
   children: "bg_back"
   children: "bg_construction"
   children: "bg_mechanism"
+  children: "chain"
   children: "go"
   children: "pipe_bg"
   children: "smoke_steam"
@@ -732,19 +1174,35 @@ embedded_instances {
   children: "bar"
   children: "bar1"
   children: "bar2"
+  children: "bar21"
+  children: "bar211"
+  children: "bar2111"
   children: "bar3"
   children: "bar31"
   children: "bar4"
+  children: "bar5"
+  children: "bar51"
   children: "chain1"
   children: "chain2"
   children: "chain_line"
   children: "chain_line1"
   children: "go2"
+  children: "ladder"
+  children: "ladder1"
+  children: "ladder11"
+  children: "ladder2"
   children: "pipe"
   children: "pipe1"
   children: "pipe2"
   children: "pipe_turn"
-  children: "platform121"
+  children: "platform_block"
+  children: "platform_block1"
+  children: "platform_block11"
+  children: "platform_top"
+  children: "platform_top1"
+  children: "platform_top2"
+  children: "platform_wall_vertical"
+  children: "platform_wall_vertical1"
   data: ""
   position {
     x: -147.991
@@ -843,9 +1301,9 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 211.964
-    y: -294.393
-    z: 0.0
+    x: 332.386
+    y: -51.176
+    z: -0.02
   }
   rotation {
     x: 0.0
@@ -939,7 +1397,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: -1525.533
     z: 0.0
   }
   rotation {
@@ -958,6 +1416,7 @@ embedded_instances {
   id: "bg_mechanism"
   children: "gear_active"
   children: "gear_active1"
+  children: "saw"
   data: ""
   position {
     x: -9.932
@@ -1058,13 +1517,101 @@ embedded_instances {
 }
 embedded_instances {
   id: "level_fg"
-  children: "platform1111"
-  children: "platform112"
+  children: "platform_bg_black"
+  children: "platform_bg_black1"
+  children: "platform_bg_black2"
   data: ""
   position {
     x: -162.388
     y: 0.0
     z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "left_platform_end"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"platform_end\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -9.986\\n"
+  "      y: -11.413\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 10.0\\n"
+  "  data: 10.0\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/player/img/player_atlas.atlas\\\"\\n"
+  "default_animation: \\\"Range Weapon\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 127.137
+    y: 1011.705
+    z: 0.0
   }
   rotation {
     x: 0.0

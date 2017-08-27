@@ -1,4 +1,3 @@
-require 'main.constants'
 require 'main.locomotion'
 
 go.property('breakable', true)
@@ -10,6 +9,16 @@ function init(self)
     go.set('#action_bg', "scale.x", 0.8)
     go.set('#action_bg', "scale.y", 0.8)
     go.set('#action_bg', "tint.w", 0)
+end
+
+
+function update(self, dt)
+    if not self.ground_contact then
+        self.velocity = self.velocity + gravityV3
+    end
+    updatePos(self, dt)
+    self.correction = vmath.vector3()
+    self.ground_contact = false
 end
 
 
@@ -29,6 +38,8 @@ function on_message(self, message_id, message, sender)
     if message_id == ANIMATION_DONE_HASH then
         if self.current_animation == hash('Break') then
             msg.post('splash#sprite', 'disable')
+            notify_player_obj_id('object_broken', go.get_id())
+            go.delete()
         end
     elseif message_id == TRIGGER_RESPONSE_HASH and message.group == PLAYER_SENSE_GROUP then
         if message.enter then
@@ -44,10 +55,15 @@ function on_message(self, message_id, message, sender)
             msg.post('#sprite', 'disable')
             msg.post('splash#sprite', 'enable')
             go.set_position(go.get_position(), 'splash')
+            msg.post('#box_break', 'play_sound')
             play_animation(self, hash('Break'), 'splash#sprite')
             -- msg.post(, 'enable')
             -- play_animation(self, hash('Break'))
             -- go.delete()
+        end
+    elseif message_id == hash("contact_point_response") then
+        if (message.group == GROUND_GROUP or message.group == CONSTRUCTION_GROUP or message.group == PLAYER_GROUP or message.group == ENEMY_GROUP) then
+            handle_geometry_contact(self, message.normal, message.distance)
         end
     end
 end

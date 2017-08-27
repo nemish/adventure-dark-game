@@ -13,6 +13,7 @@ function init(self)
     self.speed = 4
     self.animating = false
     self.current_pos = 1
+    self.initial_pos = self.current_pos
     updateLabel(self)
     msg.post("#label", "disable")
 end
@@ -24,13 +25,6 @@ function on_stop(self, url, property)
     for i, name in pairs(GEARS) do
         msg.post("/" .. name, "elevator_stop")
     end
-end
-
-
-function update(self, dt)
-    -- if self.animating then
-    --     msg.post(PLAYER_URL, 'movable_move', { position = go.get_world_position(), obj_id = go.get_id() })
-    -- end
 end
 
 
