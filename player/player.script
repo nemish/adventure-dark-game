@@ -1,4 +1,5 @@
 require "main.locomotion"
+go.property("action_time", 0)
 -- require "main.constants"
 
 DIE_ANIM_HASH = hash("Die")
@@ -49,6 +50,7 @@ function init(self)
     self.landing_sound = 'landing_sound'
     self.direction = 1
     self.hurt_direction = 1
+    self.after_hanging = false
     self.enemies = {
         [1] = nil,
         [-1] = nil
@@ -59,17 +61,24 @@ function init(self)
     }
     self.current_step = 1
 
+    self.pos = go.get_position()
     self.offset_map = {
-        [RIGHT_HANGING_HAND_HASH] = vmath.vector3(21.5, 8, 0.0),
-        [LEFT_HANGING_HAND_HASH] = vmath.vector3(-21.5, 8, 0.0)
+        [RIGHT_HANGING_HAND_HASH] = self.pos - go.get_position('hand_point_right'),
+        [LEFT_HANGING_HAND_HASH] = self.pos - go.get_position('hand_point_left')
+    }
+
+    self.DIRECTION_HANGING_COLLIDERS_MAP = {
+        [1] = '#right_hanging_hand',
+        [-1] = '#left_hanging_hand',
     }
 
     self.objects_in_touch = {
         [1] = nil,
         [-1] = nil
     }
-    self.pos = go.get_position()
     self.t = 0
+
+    self.stop_hanging_coroutine = coroutine.create(stop_hanging_co)
 
     do_init(self)
 
@@ -98,7 +107,22 @@ function restore_after_hurt(self)
 end
 
 
+function tick_coroutines(self)
+    -- if self.
+    -- if self.is_after_hang then
+    --     -- self.is_after_hang = coroutine.resume(self.stop_hanging_coroutine, self, self.t)
+    -- end
+    -- for index, cor in pairs(self.coroutines) do
+    --     cor(self)
+    -- end
+    if self.current_co then
+        self.current_co(self)
+    end
+end
+
+
 function update(self, dt)
+    tick_coroutines(self)
     self.t = self.t + dt
     if self.hurt_received_time and self.hurt_received_time < (self.t - 2) then
         restore_after_hurt(self)
@@ -119,7 +143,7 @@ function update(self, dt)
     elseif self.hurt then
         self.velocity.x = self.hurt_direction * 250
         self.anim_state = HURT_ANIM_HASH
-    elseif self.attacking then
+    elseif self.attacking and not self.after_hanging then
         self.velocity.x = 0
     else
         if self.slide_start and os.clock() - self.slide_start < 0.2 then
@@ -294,14 +318,9 @@ function on_message(self, message_id, message, sender)
     elseif message_id == TRIGGER_RESPONSE_HASH then
         if sender.fragment == TOP_CHECKER_HASH and message.group == ELEVATOR_GROUP and self.land_contact and message.enter then
             dead_by_smash(self)
-        -- elseif message.group == PLATFORM_END_GROUP then
-        --     print(message.group, message.enter)
-        -- elseif message.group == LADDER_GROUP then
-        --     print(message.group, message.enter)
-        --     -- self.ladder_contact = message.enter
         elseif sender.fragment == GROUND_CHECKER_HASH then
             if message.group == ELEVATOR_GROUP then
-                handle_movable_contact(self, sender, message)
+                handle_parenting_to_other_go(self, sender, message)
             end
 
             if message.enter then
@@ -312,8 +331,8 @@ function on_message(self, message_id, message, sender)
                 self.jump_start = false
                 self.second_jump = false
             end
-        elseif sender.fragment == LEFT_HANGING_HAND_HASH or sender.fragment == RIGHT_HANGING_HAND_HASH then
-            handle_movable_contact(self, sender, message, on_start_hanging, on_stop_hanging)
+        elseif (sender.fragment == LEFT_HANGING_HAND_HASH and not is_right(self)) or (sender.fragment == RIGHT_HANGING_HAND_HASH and is_right(self)) then
+            handle_parenting_to_other_go(self, sender, message, on_start_hanging, on_stop_hanging)
         elseif sender.fragment == RIGHT_CHECKER_HASH or sender.fragment == LEFT_CHECKER_HASH then
             local sign = sender.fragment == RIGHT_CHECKER_HASH and 1 or -1
             local object_id = message.enter and message.other_id or nil
@@ -367,32 +386,53 @@ function on_message(self, message_id, message, sender)
 end
 
 
-function handle_movable_contact(self, sender, message, on_enter, on_exit)
-    self.movable_parent_id = message.other_id
+
+function handle_parenting_to_other_go(self, sender, message, on_enter, on_exit)
+    print('handle_parenting_to_other_go', message.group, sender.fragment, message.enter, go.get_position())
     if message.enter then
+        self.movable_parent_id = message.other_id
         msg.post('.', 'set_parent', { keep_world_transform = 1, parent_id = self.movable_parent_id })
-        local offset = self.offset_map[sender.fragment] or vmath.vector3()
-        local pos = go.get_position(self.movable_parent_id)
         msg.post(self.movable_parent_id, "activate")
-        self.pos.y = self.pos.y - pos.y
-        self.pos.z = self.pos.z - pos.z
-        self.pos = self.pos - offset
+
+        local pos = go.get_position(self.movable_parent_id)
+        local offset = self.offset_map[sender.fragment]
+
+        if offset then
+            self.pos = vmath.vector3(offset.x, offset.y, offset.z)
+        else
+            self.pos = self.pos - pos
+        end
+
         if on_enter then
             on_enter(self, sender)
         end
     else
-        local offset = self.offset_map[sender.fragment] or vmath.vector3()
-        local pos = go.get_position(self.movable_parent_id)
-        self.pos.y = self.pos.y + pos.y
-        msg.post('.', 'set_parent', { keep_world_transform = 1 })
-        msg.post(self.movable_parent_id, "deactivate")
-        self.movable_parent_id = nil
-        self.pos.z = self.initial_pos.z
-        self.pos = self.pos + offset
+        unparent_go(self)
         if on_exit then
             on_exit(self, sender)
         end
     end
+end
+
+
+function unparent_go(self)
+    print('unparent_go', self.movable_parent_id)
+    if not self.movable_parent_id then
+        return
+    end
+    msg.post(self.movable_parent_id, "deactivate")
+    local pos = go.get_position(self.movable_parent_id)
+    self.movable_parent_id = nil
+
+    if self.current_offset then
+        self.pos = pos + self.current_offset
+    else
+        self.pos = self.pos + pos
+    end
+
+    self.pos.z = self.initial_pos.z
+    msg.post('.', 'set_parent', { keep_world_transform = 1 })
+    self.current_offset = nil
 end
 
 
@@ -402,8 +442,7 @@ end
 
 
 function on_stop_hanging(self, sender)
-    print('In on_stop_hanging', self, sender.fragment)
-    self.state = nil
+    initiate_hanging_stop(self)
 end
 
 
@@ -490,7 +529,11 @@ function on_input(self, action_id, action)
                 msg.post(self.movable_parent_id, "elevator_trigger", { height = 100 })
             end
         elseif action_id == DOWN_ACTION_HASH and action.pressed then
-            if self.land_contact and self.ground_contact and not self.slide_start and not self.ladder_contact then
+            if check_state(self, HANGING_STATE) then
+                -- unparent_go(self)
+                initiate_hanging_stop(self)
+                self.current_co = delayed(enable_hand_collider, self, 0.5)
+            elseif self.land_contact and self.ground_contact and not self.slide_start and not self.ladder_contact then
                 self.slide_start_direction_int = get_slide_direction(self)
 
                 if self.slide_start_direction_int then
@@ -518,7 +561,14 @@ function on_input(self, action_id, action)
             broadcast_damage(self, self.objects_in_touch)
         -- jump
         elseif action_id == hash("jump") and action.pressed then
-            if not self.land_contact and not self.second_jump then
+            if check_state(self, HANGING_STATE) then
+                initiate_hanging_stop(self)
+                unparent_go(self)
+                self.current_co = delayed(enable_hand_collider, self, 0.5)
+                self.velocity.x = 200
+                self.velocity.y = 500
+                self.second_jump = true
+            elseif not self.land_contact and not self.second_jump then
                 self.velocity.y = 800
                 self.anim_state = hash("DoubleJump")
                 self.second_jump = true
@@ -533,6 +583,60 @@ function on_input(self, action_id, action)
 		end
 	end
 end
+
+
+function delayed(fn, self, seconds)
+    end_time = self.t + seconds
+    return function (self)
+        if self.t > end_time then
+            fn(self)
+        end
+    end
+end
+
+
+function enable_hand_collider(self)
+    set_hand_collider_state(self, 'enable')
+    self.current_co = nil
+end
+
+
+function set_hand_collider_state(self, state)
+    for key, value in pairs(self.DIRECTION_HANGING_COLLIDERS_MAP) do
+        msg.post(value, state)
+    end
+end
+
+
+function initiate_hanging_stop(self)
+    -- unparent_go(self)
+    set_hand_collider_state(self, 'disable')
+    -- msg.post(self.DIRECTION_HANGING_COLLIDERS_MAP[self.direction], 'disable')
+    self.state = nil
+    self.land_contact = false
+    self.ground_contact = false
+end
+
+
+function stop_hanging_co(self, t)
+    initiate_hanging_stop(self)
+    end_time = t + 1.5
+    print('First turn of coroutine', t, end_time)
+    coroutine.yield(true)
+    if t > end_time then
+        print('ITERATIONAL turn of coroutine', t, end_time)
+        coroutine.yield(true)
+    end
+    msg.post(self.DIRECTION_HANGING_COLLIDERS_MAP[self.direction], 'enable')
+    print('ENABLED AND RETURNING false', t, end_time)
+    return false
+end
+
+
+-- function stop_hanging_co(self)
+--     print('stop_hanging', self.DIRECTION_HANGING_COLLIDERS_MAP[self.direction])
+--     msg.post(self.DIRECTION_HANGING_COLLIDERS_MAP[self.direction], 'disable')
+-- end
 
 
 function broadcast_damage(self, data)

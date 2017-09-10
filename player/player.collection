@@ -2,8 +2,6 @@ name: "default"
 instances {
   id: "player"
   prototype: "/player/player.go"
-  children: "hanging_hand_left"
-  children: "hanging_hand_right"
   position {
     x: 0.0
     y: 0.0
@@ -43,11 +41,11 @@ instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "hanging_hand_right"
+  id: "hand_point_right"
   data: ""
   position {
     x: 18.0
-    y: 3.417
+    y: 3.7
     z: 0.0
   }
   rotation {
@@ -63,11 +61,11 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "hanging_hand_left"
+  id: "hand_point_left"
   data: ""
   position {
     x: -18.0
-    y: 3.417
+    y: 3.7
     z: 0.0
   }
   rotation {

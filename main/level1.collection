@@ -929,7 +929,7 @@ instances {
   prototype: "/prefabs/platform_block.go"
   position {
     x: 1563.218
-    y: 647.636
+    y: 622.115
     z: 0.05
   }
   rotation {
@@ -948,19 +948,79 @@ instances {
   id: "Smoke_cute"
   prototype: "/prefabs/Smoke_cute.go"
   position {
-    x: -301.038
-    y: 694.704
+    x: 815.079
+    y: 945.61
+    z: 0.2
+  }
+  rotation {
+    x: 1.0
+    y: 0.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.3
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_pipes_left"
+  prototype: "/prefabs/platform_pipes_left.go"
+  position {
+    x: 1995.106
+    y: 1289.188
     z: 0.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
-    w: 1.0
+    z: 0.70710677
+    w: 0.70710677
   }
   scale3 {
-    x: 1.0
+    x: 0.5
     y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 1806.784
+    y: 1018.721
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.42261827
+    w: 0.9063078
+  }
+  scale3 {
+    x: 0.8
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve1"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 2355.427
+    y: 723.23
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.087155744
+    w: 0.9961947
+  }
+  scale3 {
+    x: 0.9
+    y: 0.5
     z: 1.0
   }
 }
@@ -999,8 +1059,8 @@ collection_instances {
   id: "player"
   collection: "/player/player.collection"
   position {
-    x: -19.44
-    y: 1003.979
+    x: 650.33
+    y: 1060.08
     z: 0.15
   }
   rotation {
@@ -1039,8 +1099,8 @@ collection_instances {
   id: "claw"
   collection: "/prefabs/claw.collection"
   position {
-    x: -1028.777
-    y: 722.243
+    x: -861.072
+    y: 1524.31
     z: 0.0
   }
   rotation {
@@ -1058,7 +1118,6 @@ collection_instances {
 scale_along_z: 0
 embedded_instances {
   id: "bg"
-  children: "Smoke_cute"
   children: "bg_back"
   children: "bg_construction"
   children: "bg_mechanism"
@@ -1198,6 +1257,7 @@ embedded_instances {
   children: "platform_block"
   children: "platform_block1"
   children: "platform_block11"
+  children: "platform_pipes_left"
   children: "platform_top"
   children: "platform_top1"
   children: "platform_top2"
@@ -1539,7 +1599,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "left_platform_end"
+  id: "platform_edge"
   data: "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
@@ -1554,8 +1614,8 @@ embedded_instances {
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
-  "      x: -9.986\\n"
-  "      y: -11.413\\n"
+  "      x: -6.165\\n"
+  "      y: -11.573\\n"
   "      z: 0.0\\n"
   "    }\\n"
   "    rotation {\\n"
@@ -1587,13 +1647,60 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/player/img/player_atlas.atlas\\\"\\n"
-  "default_animation: \\\"Range Weapon\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
+  ""
+  position {
+    x: 127.137
+    y: 1011.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "platform_edge1"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"platform_end\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -3.248\\n"
+  "      y: -5.74\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 5.0\\n"
+  "  data: 5.0\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
   "\"\n"
   "  position {\n"
   "    x: 0.0\n"
@@ -1609,8 +1716,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 127.137
-    y: 1011.705
+    x: 1285.293
+    y: 781.501
     z: 0.0
   }
   rotation {

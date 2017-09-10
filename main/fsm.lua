@@ -17,6 +17,11 @@ function set_state(self, state)
 end
 
 
+function check_state(self, state)
+    return self.state == state
+end
+
+
 function on_enemy_obstacle_reached(self)
     set_state(self, IDLE)
     self.direction = -self.direction

@@ -14,6 +14,11 @@ function notify_player(msg_name, data)
 end
 
 
+function is_right(self)
+    return self.direction == 1
+end
+
+
 function do_init(self)
     self.velocity = vmath.vector3(0, 0, 0)
     self.initial_z = go.get_position().z
@@ -25,6 +30,7 @@ function do_init(self)
     self.jump_start = false
     self.second_jump = false
     self.climbing = false
+    self.coroutines = {}
     self.ground_angle_y = 1
     self.ground_angle_x = 0
     self.actions = {}
