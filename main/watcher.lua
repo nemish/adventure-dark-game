@@ -4,5 +4,5 @@ end
 
 
 function get_lerp_position(self)
-    return vmath.lerp(0.05, self.pos, calc_pos(self.look_at, pos))
+    return vmath.lerp(0.05, self.pos, calc_pos(self.look_at))
 end

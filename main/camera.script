@@ -13,14 +13,14 @@ function init(self)
 end
 
 function update(self, dt)
-    if not self.is_initialized then
+    if self.is_initialized then
         self.pos = get_lerp_position(self)
         self.pos.z = self.initial_position.z
         go.set_position(self.pos)
     else
-        local pos = calc_pos(self.look_at)
-        pos.z = self.initial_position.z
-        go.set_position(pos)
+        self.pos = calc_pos(self.look_at)
+        self.pos.z = self.initial_position.z
+        go.set_position(self.pos)
     end
 end
 
