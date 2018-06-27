@@ -3,8 +3,8 @@ instances {
   id: "bar3"
   prototype: "/prefabs/bar.go"
   position {
-    x: -1263.712
-    y: 170.281
+    x: -1000.0
+    y: 84.0
     z: 0.0
   }
   rotation {
@@ -23,7 +23,7 @@ instances {
   id: "bar4"
   prototype: "/prefabs/bar.go"
   position {
-    x: -1527.22
+    x: -1000.0
     y: -14.203
     z: 0.0
   }
@@ -44,7 +44,7 @@ instances {
   prototype: "/prefabs/bar.go"
   position {
     x: 1213.102
-    y: 1348.901
+    y: 1612.901
     z: 0.0
   }
   rotation {
@@ -64,7 +64,7 @@ instances {
   prototype: "/prefabs/bar.go"
   position {
     x: 1912.283
-    y: 1350.76
+    y: 1655.76
     z: 0.0
   }
   rotation {
@@ -143,7 +143,7 @@ instances {
   id: "pipe_turn"
   prototype: "/prefabs/pipe_turn.go"
   position {
-    x: 930.146
+    x: 932.146
     y: 1278.023
     z: 0.0
   }
@@ -244,7 +244,7 @@ instances {
   prototype: "/prefabs/chain.go"
   position {
     x: 1951.285
-    y: 1463.247
+    y: 1613.247
     z: -0.1
   }
   rotation {
@@ -263,8 +263,8 @@ instances {
   id: "chain_fg"
   prototype: "/prefabs/chaing_fg.go"
   position {
-    x: -468.71
-    y: 1161.836
+    x: 641.29
+    y: 1982.836
     z: 0.0
   }
   rotation {
@@ -275,7 +275,7 @@ instances {
   }
   scale3 {
     x: 3.0
-    y: 3.0
+    y: 5.0
     z: 1.0
   }
 }
@@ -459,8 +459,8 @@ instances {
   id: "bar31"
   prototype: "/prefabs/bar.go"
   position {
-    x: -1767.363
-    y: 206.591
+    x: -1299.858
+    y: 104.324
     z: -0.01
   }
   rotation {
@@ -480,8 +480,8 @@ instances {
   prototype: "/prefabs/platform_top.go"
   children: "pipe3"
   position {
-    x: -440.802
-    y: 80.577
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -520,8 +520,8 @@ instances {
   id: "platform_bg_black"
   prototype: "/prefabs/platform_bg_black.go"
   position {
-    x: -2326.307
-    y: 428.324
+    x: -1700.0
+    y: 326.057
     z: 0.0
   }
   rotation {
@@ -541,7 +541,7 @@ instances {
   prototype: "/prefabs/platform_bg_black.go"
   position {
     x: 50.135
-    y: -272.919
+    y: -359.919
     z: 0.0
   }
   rotation {
@@ -680,7 +680,7 @@ instances {
   id: "ladder"
   prototype: "/prefabs/ladder.go"
   position {
-    x: -575.535
+    x: -617.535
     y: 274.977
     z: 0.0
   }
@@ -700,7 +700,7 @@ instances {
   id: "ladder1"
   prototype: "/prefabs/ladder.go"
   position {
-    x: -575.535
+    x: -700.535
     y: 569.14
     z: 0.0
   }
@@ -860,8 +860,8 @@ instances {
   id: "platform_wall_vertical"
   prototype: "/prefabs/platform_wall_vertical.go"
   position {
-    x: -1849.175
-    y: 433.564
+    x: -1300.0
+    y: 331.297
     z: 0.0
   }
   rotation {
@@ -948,7 +948,7 @@ instances {
   id: "Smoke_cute"
   prototype: "/prefabs/Smoke_cute.go"
   position {
-    x: 815.079
+    x: 817.079
     y: 945.61
     z: 0.2
   }
@@ -969,7 +969,7 @@ instances {
   prototype: "/prefabs/platform_pipes_left.go"
   position {
     x: 1995.106
-    y: 1289.188
+    y: 1597.188
     z: 0.0
   }
   rotation {
@@ -988,8 +988,8 @@ instances {
   id: "chaing_sm_curve"
   prototype: "/prefabs/chaing_sm_curve.go"
   position {
-    x: 1806.784
-    y: 1018.721
+    x: 2865.784
+    y: 1159.721
     z: 0.0
   }
   rotation {
@@ -1024,12 +1024,160 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "platform_top11"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 2111.871
+    y: 1203.11
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block12"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1942.373
+    y: 614.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar52"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 2228.997
+    y: 1421.801
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block121"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 2463.373
+    y: 851.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "evil_mushroom111"
+  prototype: "/enemies/evil_mushroom/evil_mushroom.go"
+  position {
+    x: 1876.906
+    y: 1029.444
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "evil_mushroom"
+    properties {
+      id: "strict"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve2"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 3410.784
+    y: 876.721
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.043619387
+    w: 0.99904823
+  }
+  scale3 {
+    x: 0.8
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "gomunukul11"
+  prototype: "/enemies/gomunukul/gomunukul.go"
+  position {
+    x: 1786.883
+    y: 1285.65
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "elevator"
   collection: "/prefabs/elevator.collection"
   position {
     x: 0.0
-    y: 118.37
+    y: 72.37
     z: -0.2
   }
   rotation {
@@ -1059,8 +1207,8 @@ collection_instances {
   id: "player"
   collection: "/player/player.collection"
   position {
-    x: 650.33
-    y: 1060.08
+    x: 515.33
+    y: 1095.08
     z: 0.15
   }
   rotation {
@@ -1079,8 +1227,8 @@ collection_instances {
   id: "box"
   collection: "/prefabs/box/box.collection"
   position {
-    x: -1546.334
-    y: 286.027
+    x: -933.812
+    y: 338.728
     z: 0.0
   }
   rotation {
@@ -1112,6 +1260,26 @@ collection_instances {
   scale3 {
     x: 0.5
     y: 0.5
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "box1"
+  collection: "/prefabs/box/box.collection"
+  position {
+    x: 1414.188
+    y: 1066.728
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -1241,6 +1409,7 @@ embedded_instances {
   children: "bar4"
   children: "bar5"
   children: "bar51"
+  children: "bar52"
   children: "chain1"
   children: "chain2"
   children: "chain_line"
@@ -1257,9 +1426,12 @@ embedded_instances {
   children: "platform_block"
   children: "platform_block1"
   children: "platform_block11"
+  children: "platform_block12"
+  children: "platform_block121"
   children: "platform_pipes_left"
   children: "platform_top"
   children: "platform_top1"
+  children: "platform_top11"
   children: "platform_top2"
   children: "platform_wall_vertical"
   children: "platform_wall_vertical1"
@@ -1557,9 +1729,69 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"wall21\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 3006.82\n"
+  "    y: 1719.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall211\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 7.82\n"
+  "    y: 1719.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall2111\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"platform_part_2\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 1863.82\n"
+  "    y: 1059.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
   ""
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: -0.1
   }

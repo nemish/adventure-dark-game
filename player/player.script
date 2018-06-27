@@ -35,6 +35,7 @@ SOUND_ATTACK_BLADE = 'attack_blade'
 
 HANGING_STATE = hash("Hanging")
 
+SLIDE_SPEED = 300
 
 go.property("health", 3)
 
@@ -155,7 +156,7 @@ function update(self, dt)
                 if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
                     self.slide_start = nil
                 end
-                self.velocity.x = multiplier * 300
+                self.velocity.x = multiplier * SLIDE_SPEED
             end
         elseif self.slide_start then
             self.slide_start = nil
@@ -263,6 +264,11 @@ function update(self, dt)
         self.anim_state = IDLE_ANIM_HASH
     end
 
+    -- if self.velocity.x == 0 and self.anim_state == SLIDE_ANIM_HASH then
+    --     self.slide_start = false
+    --     self.anim_state = IDLE_ANIM_HASH
+    -- end
+
     play_animation(self, self.state or self.anim_state)
 
     if not self.dead_by_fall then
@@ -295,6 +301,10 @@ function clear_object_in_touch(self, objects, obj_id)
             objects[sign] = nil
         end
     end
+end
+
+
+function _reset_state(self)
 end
 
 
@@ -528,7 +538,7 @@ function on_input(self, action_id, action)
             if self.movable_parent_id then
                 msg.post(self.movable_parent_id, "elevator_trigger", { height = 100 })
             end
-        elseif action_id == DOWN_ACTION_HASH and action.pressed then
+        elseif action_id == DOWN_ACTION_HASH and not self.attacking and action.pressed then
             if check_state(self, HANGING_STATE) then
                 -- unparent_go(self)
                 initiate_hanging_stop(self)
@@ -561,6 +571,7 @@ function on_input(self, action_id, action)
             broadcast_damage(self, self.objects_in_touch)
         -- jump
         elseif action_id == hash("jump") and action.pressed then
+            self.attacking = false
             if check_state(self, HANGING_STATE) then
                 initiate_hanging_stop(self)
                 unparent_go(self)

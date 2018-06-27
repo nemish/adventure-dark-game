@@ -13,6 +13,9 @@ images {
 images {
   image: "/player/img/Range Weapon.png"
 }
+images {
+  image: "/img/arrow-right.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

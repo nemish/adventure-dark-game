@@ -5,32 +5,6 @@ go.property("initial_value", 0.95)
 go.property("delta", 0.9)
 
 
-function do_animate(self, pos)
-    local duration = math.random(3, 6)
-    -- local pauseTime = math.random(0.5, 4)
-    local d = math.random(0.5, self.delta)
-    local value = self.initial_value + d * self.direction
-
-    go.animate(
-        "#sprite",
-        "tint.w",
-        go.PLAYBACK_ONCE_FORWARD,
-        value,
-        go.EASING_LINEAR,
-        duration,
-        0,
-        -- pauseTime,
-        reverse_animation
-    )
-end
-
-
-function reverse_animation(self, url, property)
-    self.direction = self.direction * -1
-    do_animate(self)
-end
-
-
 function init(self)
     self.direction = 1
     self.t = 0
