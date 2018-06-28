@@ -1,6 +1,9 @@
+-- CURRENT_LEVEL = '#level1proxy'
+CURRENT_LEVEL = '#level0proxy'
+
 function init(self)
     msg.post(".", "acquire_input_focus")
-    msg.post("#level1proxy", "load")
+    msg.post(CURRENT_LEVEL, "load")
 end
 
 function final(self)
@@ -9,10 +12,10 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("reload_level") then
-        msg.post("#level1proxy", "unload")
+        msg.post(CURRENT_LEVEL, "unload")
     elseif message_id == hash("proxy_loaded") then
         msg.post(sender, "enable")
     elseif message_id == hash("proxy_unloaded") then
-        msg.post("#level1proxy", "load")
+        msg.post(CURRENT_LEVEL, "load")
     end
 end

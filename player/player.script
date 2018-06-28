@@ -36,6 +36,7 @@ SOUND_ATTACK_BLADE = 'attack_blade'
 HANGING_STATE = hash("Hanging")
 
 SLIDE_SPEED = 300
+ATTACK_MOVE_SPEED = 40
 
 go.property("health", 3)
 
@@ -52,6 +53,7 @@ function init(self)
     self.direction = 1
     self.hurt_direction = 1
     self.after_hanging = false
+    self.coroutines = {}
     self.enemies = {
         [1] = nil,
         [-1] = nil
@@ -94,11 +96,18 @@ function final(self)
 end
 
 
+local function _enable_suriken(self)
+    self.suriken = true
+end
+
+
 local function throw_suriken(self)
+    self.coroutines['suriken'] = delayed(_enable_suriken, self, 0.25);
     self.suriken = false
     msg.post(GUI_LEVEL_HASH, "throw_suriken")
     factory.create('#suriken_factory', nil, nil, { direction = self.direction })
 end
+
 
 
 function restore_after_hurt(self)
@@ -116,8 +125,136 @@ function tick_coroutines(self)
     -- for index, cor in pairs(self.coroutines) do
     --     cor(self)
     -- end
+    for index, co in pairs(self.coroutines) do
+        co(self)
+    end
+
     if self.current_co then
         self.current_co(self)
+    end
+end
+
+function _handle_slide(self)
+    if self.slide_start and os.clock() - self.slide_start < 0.2 then
+        if math.abs(self.velocity.x) < 20 then
+            self.slide_start = nil
+        else
+            self.anim_state = SLIDE_ANIM_HASH
+            multiplier = get_slide_direction(self)
+            if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
+                self.slide_start = nil
+            end
+            self.velocity.x = multiplier * SLIDE_SPEED
+        end
+    elseif self.slide_start then
+        self.slide_start = nil
+    end
+end
+
+
+function _get_move_key(self)
+    return self.actions[LEFT_ACTION_HASH] or self.actions[RIGHT_ACTION_HASH]
+end
+
+
+function _handle_move_actions(self)
+    if _get_move_key(self) then
+        if self.actions[LEFT_ACTION_HASH] then
+            self.direction = -1
+            self.velocity.x = -200
+            sprite.set_hflip("#sprite", true)
+            if self.land_contact then
+                play_steps_sound(self)
+                self.anim_state = RUN_ANIM_HASH
+            end
+        else
+            self.direction = 1
+            self.velocity.x = 200
+            sprite.set_hflip("#sprite", false)
+            if self.land_contact then
+                play_steps_sound(self)
+                self.anim_state = RUN_ANIM_HASH
+            end
+        end
+    else
+        self.velocity.x = 0
+    end
+end
+
+function _handle_push(self)
+    if self.velocity.x ~= 0 and self.land_contact and self.objects_in_touch[self.direction] then
+        self.anim_state = PUSH_ANIM_HASH
+    end
+end
+
+function _handle_attack(self)
+    local speed = ATTACK_MOVE_SPEED
+    if not _get_move_key(self) or self.current_animation == THROW_ANIM_HASH then
+        speed = 0
+    end
+    self.velocity.x = self.direction * speed
+    -- self.velocity.x = 0
+end
+
+
+function _handle_climb(self)
+    -- are we in contact with a ladder?
+    if self.ladder_contact then
+        -- set vertical velocity if we are climbing up or down
+        -- also set flag to indicate that we are climbing
+        if self.actions[UP_ACTION_HASH] then
+            self.velocity.y = 150
+            self.land_contact = false
+            -- self.ground_contact = true
+            self.climbing = true
+            self.jump_start = false
+            self.second_jump = false
+            self.anim_state = CLIMB_ANIM_HASH
+        elseif self.actions[DOWN_ACTION_HASH] then
+            self.velocity.y = -150
+            -- self.ground_contact = true
+            self.jump_start = false
+            self.second_jump = false
+            self.climbing = true
+            self.anim_state = CLIMB_ANIM_HASH
+        elseif self.climbing then
+            self.anim_state = CLIMB_IDLE_ANIM_HASH
+            self.velocity.y = 0
+        end
+    else
+        self.forced_pos_x = nil
+        self.climbing = false
+    end
+
+    if not self.climbing then
+        self.forced_pos_x = nil
+    end
+
+    if self.land_contact or self.ground_contact then
+        self.forced_pos_x = nil
+        self.climbing = false
+    end
+
+end
+
+
+function _handle_idle(self)
+    if not self.actions[LEFT_ACTION_HASH] and not self.actions[RIGHT_ACTION_HASH] and self.land_contact and not self.slide_start and not self.hurt and not self.attacking and not self.dead and not self.finally_dead and not self.climbing and self.state ~= HANGING_STATE then
+        self.anim_state = IDLE_ANIM_HASH
+    end
+end
+
+
+function _check_gravity(self)
+    -- apply gravity if there's no ground contact and if we're not climbing a ladder
+    if not self.ground_contact and not self.climbing and self.state ~= HANGING_STATE then
+        self.velocity = self.velocity + gravityV3
+        if not self.dead and not self.finally_dead then
+            if self.velocity.y < -100 then
+                self.anim_state = FALL_DOWN_ANIM_HASH
+                self.hurt = false
+            end
+        end
     end
 end
 
@@ -145,108 +282,25 @@ function update(self, dt)
         self.velocity.x = self.hurt_direction * 250
         self.anim_state = HURT_ANIM_HASH
     elseif self.attacking and not self.after_hanging then
-        self.velocity.x = 0
+        _handle_attack(self)
     else
-        if self.slide_start and os.clock() - self.slide_start < 0.2 then
-            if math.abs(self.velocity.x) < 20 then
-                self.slide_start = nil
-            else
-                self.anim_state = SLIDE_ANIM_HASH
-                multiplier = get_slide_direction(self)
-                if multiplier == 0 or multiplier ~= self.slide_start_direction_int then
-                    self.slide_start = nil
-                end
-                self.velocity.x = multiplier * SLIDE_SPEED
-            end
-        elseif self.slide_start then
-            self.slide_start = nil
-        end
+        _handle_slide(self)
 
         if not self.slide_start and not self.attacking and not self.hurt then
-            if self.actions[LEFT_ACTION_HASH] then
-                self.direction = -1
-                self.velocity.x = -200
-                sprite.set_hflip("#sprite", true)
-                if self.land_contact then
-                    play_steps_sound(self)
-                    self.anim_state = RUN_ANIM_HASH
-                end
-
-            elseif self.actions[RIGHT_ACTION_HASH] then
-                self.direction = 1
-                self.velocity.x = 200
-                sprite.set_hflip("#sprite", false)
-                if self.land_contact then
-                    play_steps_sound(self)
-                    self.anim_state = RUN_ANIM_HASH
-                end
-            -- and clear it if we're not moving left/right
-            else
-                self.velocity.x = 0
-            end
-
-            if self.velocity.x ~= 0 and self.land_contact and self.objects_in_touch[self.direction] then
-                self.anim_state = PUSH_ANIM_HASH
-            end
+            _handle_move_actions(self)
+            _handle_push(self)
         end
     end
 
 
 	-- are we in contact with a ladder?
 	if self.ladder_contact then
-		-- set vertical velocity if we are climbing up or down
-		-- also set flag to indicate that we are climbing
-		if self.actions[UP_ACTION_HASH] then
-			self.velocity.y = 150
-            self.land_contact = false
-			-- self.ground_contact = true
-			self.climbing = true
-            self.jump_start = false
-            self.second_jump = false
-            self.anim_state = CLIMB_ANIM_HASH
-		elseif self.actions[DOWN_ACTION_HASH] then
-			self.velocity.y = -150
-			-- self.ground_contact = true
-            self.jump_start = false
-            self.second_jump = false
-			self.climbing = true
-            self.anim_state = CLIMB_ANIM_HASH
-		elseif self.climbing then
-            self.anim_state = CLIMB_IDLE_ANIM_HASH
-			self.velocity.y = 0
-		end
-
-        -- if not self.land_contact or not self.ground_contact then
-        --     self.velocity.x = 0
-        -- end
-	else
-        self.forced_pos_x = nil
-		self.climbing = false
+        _handle_climb(self)
 	end
 
-    if not self.climbing then
-        self.forced_pos_x = nil
-    end
+    _handle_idle(self)
 
-    if self.land_contact or self.ground_contact then
-        self.forced_pos_x = nil
-        self.climbing = false
-    end
-
-    if not self.actions[LEFT_ACTION_HASH] and not self.actions[RIGHT_ACTION_HASH] and self.land_contact and not self.slide_start and not self.hurt and not self.attacking and not self.dead and not self.finally_dead and not self.climbing and self.state ~= HANGING_STATE then
-        self.anim_state = IDLE_ANIM_HASH
-    end
-
-	-- apply gravity if there's no ground contact and if we're not climbing a ladder
-	if not self.ground_contact and not self.climbing and self.state ~= HANGING_STATE then
-		self.velocity = self.velocity + gravityV3
-        if not self.dead and not self.finally_dead then
-            if self.velocity.y < -100 then
-                self.anim_state = FALL_DOWN_ANIM_HASH
-                self.hurt = false
-            end
-        end
-	end
+    _check_gravity(self)
 
     if self.velocity.y < -1 and not self.climbing then
         self.land_contact = false
@@ -279,6 +333,7 @@ function update(self, dt)
         msg.post("level1:/bottom_cleaner", "look_at", { position = worldPos })
         msg.post("player_lighting", "look_at", { position = worldPos })
     end
+    -- print(self.anim_state);
 end
 
 
@@ -317,6 +372,7 @@ function on_message(self, message_id, message, sender)
             self.hurt = false
         elseif self.current_animation == ATTACK_ANIM_HASH or self.current_animation == ATTACK_ANIM_HASH_2 or self.current_animation == THROW_ANIM_HASH then
             self.attacking = false
+            self.velocity.x = 0
         elseif self.jump_start then
             self.anim_state = JUMP_LOOP_ANIM_HASH
             self.jump_start = false
@@ -580,7 +636,7 @@ function on_input(self, action_id, action)
                 self.velocity.y = 500
                 self.second_jump = true
             elseif not self.land_contact and not self.second_jump then
-                self.velocity.y = 800
+                self.velocity.y = 600
                 self.anim_state = hash("DoubleJump")
                 self.second_jump = true
             elseif self.land_contact or self.climbing then
@@ -631,6 +687,19 @@ end
 
 function stop_hanging_co(self, t)
     initiate_hanging_stop(self)
+    end_time = t + 1.5
+    print('First turn of coroutine', t, end_time)
+    coroutine.yield(true)
+    if t > end_time then
+        print('ITERATIONAL turn of coroutine', t, end_time)
+        coroutine.yield(true)
+    end
+    msg.post(self.DIRECTION_HANGING_COLLIDERS_MAP[self.direction], 'enable')
+    print('ENABLED AND RETURNING false', t, end_time)
+    return false
+end
+
+function run_after_seconds(self, t)
     end_time = t + 1.5
     print('First turn of coroutine', t, end_time)
     coroutine.yield(true)

@@ -1,0 +1,1966 @@
+name: "level1"
+instances {
+  id: "bar3"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: -1000.0
+    y: 84.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar4"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: -1000.0
+    y: -14.203
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.25881904
+    w: 0.9659258
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1213.102
+    y: 1612.901
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar1"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1912.283
+    y: 1655.76
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: 214.492
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe1"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: 607.364
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe2"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: -153.936
+    y: 1331.214
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe_turn"
+  prototype: "/prefabs/pipe_turn.go"
+  position {
+    x: 932.146
+    y: 1278.023
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: -1.0
+    y: 1.0
+    z: -1.0
+  }
+}
+instances {
+  id: "bar2"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: -139.837
+    y: 1064.353
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.38268343
+    w: 0.9238795
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain_line"
+  prototype: "/prefabs/chain_line.go"
+  position {
+    x: -445.739
+    y: 1623.164
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain1"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: 395.278
+    y: 1449.744
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain_line1"
+  prototype: "/prefabs/chain_line.go"
+  position {
+    x: 1141.558
+    y: 1793.477
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain2"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: 1951.285
+    y: 1613.247
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain_fg"
+  prototype: "/prefabs/chaing_fg.go"
+  position {
+    x: 641.29
+    y: 1982.836
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 3.0
+    y: 5.0
+    z: 1.0
+  }
+}
+instances {
+  id: "gear_active"
+  prototype: "/prefabs/gear_active.go"
+  position {
+    x: -980.89
+    y: -357.18
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.6087614
+    w: 0.7933533
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "gear_active1"
+  prototype: "/prefabs/gear_active.go"
+  position {
+    x: -1262.839
+    y: -376.143
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.7933533
+    w: 0.6087614
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "direction"
+      value: "right"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "gomunukul"
+  prototype: "/enemies/gomunukul/gomunukul.go"
+  position {
+    x: -342.134
+    y: 174.65
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bottom_cleaner"
+  prototype: "/main/bottom_cleaner.go"
+  position {
+    x: -877.083
+    y: -632.735
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "gomunukul1"
+  prototype: "/enemies/gomunukul/gomunukul.go"
+  position {
+    x: -171.117
+    y: 174.65
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe_bg"
+  prototype: "/prefabs/pipe_bg.go"
+  position {
+    x: -2036.189
+    y: -253.309
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "smoke_steam"
+  prototype: "/prefabs/smoke_steam.go"
+  position {
+    x: -2046.19
+    y: 102.004
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "evil_mushroom11"
+  prototype: "/enemies/evil_mushroom/evil_mushroom.go"
+  position {
+    x: -1344.094
+    y: 265.444
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "evil_mushroom"
+    properties {
+      id: "strict"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar31"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: -1299.858
+    y: 104.324
+    z: -0.01
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.4
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top"
+  prototype: "/prefabs/platform_top.go"
+  children: "pipe3"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pipe3"
+  prototype: "/prefabs/pipe.go"
+  position {
+    x: -175.373
+    y: -236.99
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_bg_black"
+  prototype: "/prefabs/platform_bg_black.go"
+  position {
+    x: -1700.0
+    y: 326.057
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_bg_black1"
+  prototype: "/prefabs/platform_bg_black.go"
+  position {
+    x: 50.135
+    y: -359.919
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chain"
+  prototype: "/prefabs/chain.go"
+  position {
+    x: -379.53
+    y: 437.322
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "bar21"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 952.781
+    y: 431.175
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar211"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 1214.554
+    y: 232.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.13052619
+    w: 0.9914449
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar2111"
+  prototype: "/prefabs/bar2.go"
+  position {
+    x: 884.467
+    y: 146.981
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.25881904
+    w: 0.9659258
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top2"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 712.648
+    y: -325.647
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_bg_black2"
+  prototype: "/prefabs/platform_bg_black.go"
+  position {
+    x: 957.148
+    y: -682.488
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: -617.535
+    y: 274.977
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder1"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: -700.535
+    y: 569.14
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder2"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: 1208.992
+    y: -152.373
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "ladder11"
+  prototype: "/prefabs/ladder.go"
+  position {
+    x: 1034.969
+    y: 185.674
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "bar5"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 540.997
+    y: -108.199
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "bar51"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 1398.451
+    y: -108.199
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top1"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 1050.871
+    y: 975.11
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 559.762
+    y: 291.56
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block1"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1512.373
+    y: 184.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_wall_vertical"
+  prototype: "/prefabs/platform_wall_vertical.go"
+  position {
+    x: -1300.0
+    y: 331.297
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_wall_vertical1"
+  prototype: "/prefabs/platform_wall_vertical.go"
+  position {
+    x: -1849.175
+    y: 1066.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "saw"
+  prototype: "/prefabs/saw.go"
+  position {
+    x: -350.87
+    y: 91.257
+    z: -0.01
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "saw"
+    properties {
+      id: "move_distance"
+      value: "200.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block11"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1563.218
+    y: 622.115
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "Smoke_cute"
+  prototype: "/prefabs/Smoke_cute.go"
+  position {
+    x: 817.079
+    y: 945.61
+    z: 0.2
+  }
+  rotation {
+    x: 1.0
+    y: 0.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.3
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_pipes_left"
+  prototype: "/prefabs/platform_pipes_left.go"
+  position {
+    x: 1995.106
+    y: 1597.188
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 2865.784
+    y: 1159.721
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.42261827
+    w: 0.9063078
+  }
+  scale3 {
+    x: 0.8
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve1"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 2355.427
+    y: 723.23
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.087155744
+    w: 0.9961947
+  }
+  scale3 {
+    x: 0.9
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_top11"
+  prototype: "/prefabs/platform_top.go"
+  position {
+    x: 2111.871
+    y: 1203.11
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block12"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 1942.373
+    y: 614.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bar52"
+  prototype: "/prefabs/bar.go"
+  position {
+    x: 2228.997
+    y: 1421.801
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_block121"
+  prototype: "/prefabs/platform_block.go"
+  position {
+    x: 2463.373
+    y: 851.682
+    z: 0.05
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "evil_mushroom111"
+  prototype: "/enemies/evil_mushroom/evil_mushroom.go"
+  position {
+    x: 1876.906
+    y: 1029.444
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "evil_mushroom"
+    properties {
+      id: "strict"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chaing_sm_curve2"
+  prototype: "/prefabs/chaing_sm_curve.go"
+  position {
+    x: 3410.784
+    y: 876.721
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.043619387
+    w: 0.99904823
+  }
+  scale3 {
+    x: 0.8
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "gomunukul11"
+  prototype: "/enemies/gomunukul/gomunukul.go"
+  position {
+    x: 1786.883
+    y: 1285.65
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "elevator"
+  collection: "/prefabs/elevator.collection"
+  position {
+    x: 0.0
+    y: 72.37
+    z: -0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  instance_properties {
+    id: "elevator"
+    properties {
+      id: "api"
+      properties {
+        id: "height"
+        value: "700.0"
+        type: PROPERTY_TYPE_NUMBER
+      }
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "player"
+  collection: "/player/player.collection"
+  position {
+    x: 515.33
+    y: 1095.08
+    z: 0.15
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "box"
+  collection: "/prefabs/box/box.collection"
+  position {
+    x: -933.812
+    y: 338.728
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "claw"
+  collection: "/prefabs/claw.collection"
+  position {
+    x: -861.072
+    y: 1524.31
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "box1"
+  collection: "/prefabs/box/box.collection"
+  position {
+    x: 1414.188
+    y: 1066.728
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "bg"
+  children: "bg_back"
+  children: "bg_construction"
+  children: "bg_mechanism"
+  children: "chain"
+  children: "go"
+  children: "pipe_bg"
+  children: "smoke_steam"
+  data: "components {\n"
+  "  id: \"parallax_bg\"\n"
+  "  component: \"/prefabs/parallax_bg.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 688.921
+    y: 493.275
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "camera"
+  data: "components {\n"
+  "  id: \"camera_comp\"\n"
+  "  component: \"/main/main_camera.camera\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"main_camera\"\n"
+  "  component: \"/main/camera.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/main/dark neanders.wav\\\"\\n"
+  "looping: 1\\n"
+  "group: \\\"master\\\"\\n"
+  "gain: 1.0\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: -540.501
+    y: -38.916
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "level"
+  children: "bar"
+  children: "bar1"
+  children: "bar2"
+  children: "bar21"
+  children: "bar211"
+  children: "bar2111"
+  children: "bar3"
+  children: "bar31"
+  children: "bar4"
+  children: "bar5"
+  children: "bar51"
+  children: "bar52"
+  children: "chain1"
+  children: "chain2"
+  children: "chain_line"
+  children: "chain_line1"
+  children: "go2"
+  children: "ladder"
+  children: "ladder1"
+  children: "ladder11"
+  children: "ladder2"
+  children: "pipe"
+  children: "pipe1"
+  children: "pipe2"
+  children: "pipe_turn"
+  children: "platform_block"
+  children: "platform_block1"
+  children: "platform_block11"
+  children: "platform_block12"
+  children: "platform_block121"
+  children: "platform_pipes_left"
+  children: "platform_top"
+  children: "platform_top1"
+  children: "platform_top11"
+  children: "platform_top2"
+  children: "platform_wall_vertical"
+  children: "platform_wall_vertical1"
+  data: ""
+  position {
+    x: -147.991
+    y: 0.0
+    z: -0.06
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "env"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "fg"
+  children: "chain_fg"
+  data: "components {\n"
+  "  id: \"parallax\"\n"
+  "  component: \"/prefabs/parallax.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: -1271.146
+    y: -335.089
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "go"
+  data: "embedded_components {\n"
+  "  id: \"sprite2\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"background structure 1\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: -847.854\n"
+  "    y: -105.982\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 332.386
+    y: -51.176
+    z: -0.02
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bg_construction"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"background structure 1 blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: -2492.303\n"
+  "    y: -94.16\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.05
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "go2"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"gui\"\n"
+  "  component: \"/gui/health.gui\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: -1525.533
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bg_mechanism"
+  children: "gear_active"
+  children: "gear_active1"
+  children: "saw"
+  data: ""
+  position {
+    x: -9.932
+    y: 9.931
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bg_back"
+  data: "embedded_components {\n"
+  "  id: \"wall1\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 176.811\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall2\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 3006.82\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall3\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: -2727.71\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall21\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 3006.82\n"
+  "    y: 1719.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall211\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"BackGround image blur\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 7.82\n"
+  "    y: 1719.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"wall2111\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/img/factory/factory.atlas\\\"\\n"
+  "default_animation: \\\"platform_part_2\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 1863.82\n"
+  "    y: 1059.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 1.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 6.123234E-17\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 2.0
+    y: 0.0
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "level_fg"
+  children: "platform_bg_black"
+  children: "platform_bg_black1"
+  children: "platform_bg_black2"
+  data: ""
+  position {
+    x: -162.388
+    y: 0.0
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "platform_edge"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"platform_end\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -6.165\\n"
+  "      y: -11.573\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 10.0\\n"
+  "  data: 10.0\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 127.137
+    y: 1011.705
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "platform_edge1"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"platform_end\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -3.248\\n"
+  "      y: -5.74\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 5.0\\n"
+  "  data: 5.0\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 1285.293
+    y: 781.501
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

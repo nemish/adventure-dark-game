@@ -407,7 +407,7 @@ animations {
     image: "/player/img/PNG Sequences/Throwing/Throwing_011.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
-  fps: 30
+  fps: 50
   flip_horizontal: 0
   flip_vertical: 0
 }
